@@ -1,42 +1,25 @@
+import {Yara} from './js/yara.js';
+import {PythonRE} from './js/python.js';
 
 function yara_exec(txt, rule){
-    new Module().then(async yara => {
-        const yara_matches = yara.run(txt, rule);
-        // console.log(yara_matches)
-        for (let i = 0; i < yara_matches.matchedRules.size(); i++) {
-            // let metadata = {};
-            const rule = yara_matches.matchedRules.get(i);
-
-            const matches = rule.resolvedMatches
-            for (let j = 0; j < matches.size(); j++) {
-                const match = matches.get(j);
-                console.log("matched: ", match)
-            }
-        }
+    new Module().then(async yara_wasm => {
+        let yara = new Yara(yara_wasm, rule);
+        await yara.yara_runner(txt);
     });
 }
 
-
-async function exec_python(code){
-    const output = document.getElementById("output");
-    output.value = "Initializing...\n";
-
+async function python_exec(txt){
+    console.log(txt);
     let pyodide = await loadPyodide();
-    // await pyodide.loadPackage("micropip");
-    // const micropip = pyodide.pyimport("micropip");
-    // await micropip.install('./whl/yara_python-4.2.0-cp310-cp310-emscripten_3_1_14_wasm32.whl');
-    // pyodide.runPython(`
-    // import yara
-    // rule = yara.compile(source='rule foo: bar {strings: $a = "lmn" condition: $a}')
-    // matches = rule.match(data='abcdefgjiklmnoprstuvwxyz')
-    // print(matches)
-    // `);
+    console.log(pyodide);
+    let python_re = new PythonRE(pyodide);
+    await python_re.runner(txt);
+}
 
-    yara_exec("abcdefgjiklmnoprstuvwxyz", 'rule foo: bar {strings: $a = "lmn" condition: $a}')
-
-    let ret = await pyodide.runPython(code);
-    output.value += "\n" + ret
-    return ret
+async function exec_(code){
+    // TODO: とりあえず、実行確認だけしてる。それぞれ、amd/armとオプションを使ってどれを使うか条件分岐する。
+    yara_exec(code, []);
+    await python_exec(code);
 }
 
 
@@ -47,5 +30,5 @@ window.onload = function () {
     console.log("[insandbox.js] " + url.searchParams.get("s_text"))
     let code = url.searchParams.get("s_text")
 
-    exec_python(code);
+    exec_(code);
 }
