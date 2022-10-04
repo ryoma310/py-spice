@@ -23,7 +23,7 @@
 
   "web_accessible_resources": [
     {
-      "resources": [ "pyodide/*"],
+      "resources": [ "pyodide/*", "lib/*"],
       "matches": ["<all_urls>"]
     }
   ],
