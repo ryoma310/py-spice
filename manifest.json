@@ -1,36 +1,36 @@
 {
-  "manifest_version": 3,
-  "name": "context menus",
-  "version": "1.0",
-
-  "background": {
-    "service_worker": "background.js",
-    "type": "module"
-  },
-
-  "action": {
-    "default_popup": "popup.html"
-  },
-
-  "options_page": "options.html",
-
-  "permissions": [
-    "activeTab",
-    "contextMenus",
-    "scripting",
-    "storage"
-  ],
-
-  "web_accessible_resources": [
-    {
-      "resources": [ "pyodide/*", "lib/*"],
-      "matches": ["<all_urls>"]
+    "manifest_version": 3,
+    "name": "context menus",
+    "version": "1.0",
+    
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    
+    "action": {
+        "default_popup": "popup.html"
+    },
+    
+    "options_page": "options.html",
+    
+    "permissions": [
+        "activeTab",
+        "contextMenus",
+        "scripting",
+        "storage"
+    ],
+    
+    "web_accessible_resources": [
+        {
+            "resources": [ "pyodide/*", "lib/*"],
+            "matches": ["<all_urls>"]
+        }
+    ],
+    
+    "sandbox": {
+        "pages": [
+            "insandbox.html"
+        ]
     }
-  ],
-
-  "sandbox": {
-    "pages": [
-      "insandbox.html"
-    ]
-  }
 }
