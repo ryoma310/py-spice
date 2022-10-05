@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.21.3/full/pyodide.js"></script>
+</head>
+<body>
+    <h2>List of Yara Rules</h2>
+    <ol id="yara_list"></ol>
+    <script type="text/javascript">
+        async function getYaraJson() {
+            let pyodide = await loadPyodide();
+            await pyodide.loadPackage("micropip");
+            const micropip = pyodide.pyimport("micropip");
+            await micropip.install('plyara');
+            return pyodide.runPythonAsync(`
+import plyara
+import json
+
+parser = plyara.Plyara()
+
+rules_string = """rule url {
+    strings:
+        $url_regex = /https?:\\/\\/[a-zA-Z]+?\\//
+        // なんかバックスラッシュのエスケープがうまく動かないよ
+    condition:
+        $url_regex
+}
+
+rule python_import {
+    strings:
+        $subprocess = "import subprocess"
+        $os = "import os"
+        $sys = "import sys"
+        $socket = "import socket"
+        $requests = "import requests"
+        $pty = "import pty"
+    condition:
+        any of them
+}
+"""
+rules = parser.parse_string(rules_string)
+json.dumps(rules)
+            `);
+        }
+
+        async function main() {
+            let yara_rules = await JSON.parse(await getYaraJson());
+            console.log(yara_rules);
+
+            var rules_list = document.getElementById("yara_list");
+
+            yara_rules.forEach(rule => {
+                var rule_li = document.createElement("li");
+                rules_list.appendChild(rule_li);
+                
+                var header = document.createElement("h3");
+                header.textContent = rule.rule_name;
+                rule_li.appendChild(header);
+
+                var strings_header = document.createElement("h4");
+                strings_header.textContent = "Strings";
+                rule_li.appendChild(strings_header);
+
+                var strings_list = document.createElement("ul");
+                rule_li.appendChild(strings_list);
+
+                rule.strings.forEach(string => {
+                    var str_li = document.createElement("li");
+                    str_li.textContent = JSON.stringify(string);
+                    strings_list.appendChild(str_li);
+                });
+
+                var condition_header = document.createElement("h4");
+                condition_header.textContent = "Condition";
+                rule_li.appendChild(condition_header);
+
+                var cond_p = document.createElement("p");
+                cond_p.textContent = rule.condition_terms.join(" ");
+                rule_li.appendChild(cond_p);
+                
+            });
+
+        }
+        main();
+        
+    </script>
+</body>
+
+</html>
