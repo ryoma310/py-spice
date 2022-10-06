@@ -12,7 +12,6 @@ window.onload = function () {
 }
 
 window.addEventListener('message', async function (e) {
-    console.log("read file");
     const root = await navigator.storage.getDirectory();
     const rule_handle = await root.getFileHandle("rules.yar", {create: true});
     let rules_str = await (await rule_handle.getFile()).text();

@@ -43,6 +43,5 @@ async function displayRules(rules_str) {
 }
 
 window.addEventListener('message', async function (e) {
-    console.log(e.data.message);
     displayRules(e.data.message);
 });

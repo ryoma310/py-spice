@@ -40,7 +40,6 @@ async function add_rule() {
     const new_rules = await file.text();
     //await writable.write(contents);
     //await writable.close();
-    console.log(new_rules);
 
     const root = await navigator.storage.getDirectory();
     const rule_handle = await root.getFileHandle("rules.yar", {create: true});
