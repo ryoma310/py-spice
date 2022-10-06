@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "context menus",
+    "name": "py-spice",
     "version": "1.0",
     
     "background": {
