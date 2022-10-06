@@ -1,8 +1,8 @@
 // Saves options to chrome.storage
 function save_options() {
-    var way = document.wayForm.way.value;
+    var inspect_method = document.inspect_method_form.inspect_method.value;
     chrome.storage.sync.set({
-        favoriteWay: way
+        favorite_inspect_method: inspect_method
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('status');
@@ -18,9 +18,9 @@ function save_options() {
 function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.sync.get({
-        favoriteWay: 'yara'
+        favorite_inspect_method: 'yara'
     }, function(items) {
-        document.wayForm.way.value = items.favoriteWay;
+        document.inspect_method_form.inspect_method.value = items.favorite_inspect_method;
     });
 }
 
