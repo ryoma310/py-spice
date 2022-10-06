@@ -1,6 +1,6 @@
 rule url {
     strings:
-        $url_regex = /https?:\/\/[a-zA-Z]+?\//
+        $url_regex = /https?:\/\/([\w\.-]+)([\/\w \.-]*)/
     condition:
         $url_regex 
 }
