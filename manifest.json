@@ -30,7 +30,8 @@
     
     "sandbox": {
         "pages": [
-            "insandbox.html"
+            "insandbox.html",
+            "rules.html"
         ]
     }
 }

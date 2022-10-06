@@ -42,17 +42,23 @@ rule socket {
 rule os {
     strings:
         $os_system = "os.system"
+    condition:
+        any of them
 }
 
 rule eval_and_exec {
     strings:
         $ecal = "eval"
         $exec = "exec"
+    condition:
+        any of them
 }
 
 rule pty {
     strings:
         $spawn = "pty.spawn(\"/bin/sh\")"
+    condition:
+        any of them
 }
 
 rule python_double_underscore {

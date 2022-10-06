@@ -1,11 +1,6 @@
 import plyara
 
 parser = plyara.Plyara()
-# mylist = parser.parse_string('rule MyRule { strings: $a="1" \n condition: false }')
-
-# with open("regex_yara.yar") as f:
-#     rules_string = f.read()
-#     rules = parser.parse_string(rules_string)
 
 rules_string = """rule url {
     strings:
