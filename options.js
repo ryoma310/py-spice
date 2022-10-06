@@ -28,6 +28,22 @@ function restore_options() {
     });
 }
 
+var show_rules_clicked = false;
+
+function show_yara_rules() {
+    if (!show_rules_clicked) {
+        var container = document.getElementById("rules_container");
+        var iframe = document.createElement("iframe");
+        iframe.width = 500;
+        iframe.height = 500;
+        container.appendChild(iframe);
+        iframe.src = new URL(chrome.runtime.getURL('./rules.html'));
+        console.log("clicked");
+        show_rules_clicked = true;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click',
 save_options);
+document.getElementById('show_rules').addEventListener('click', show_yara_rules);
