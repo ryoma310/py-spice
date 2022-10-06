@@ -12,15 +12,14 @@ async function yara_exec(txt, rule){
             return;
         */
         console.log(e.data.message);
-        //let yara = new Yara(yara_wasm, e.data.message);
-        //await yara.yara_runner(txt); 
+        rule = e.data.message;
+        let yara_wasm = await new Module();
+        let yara = new Yara(yara_wasm, rule);
+        yara.check_yara_rules();
+        let res = await yara.yara_runner(txt);
+        return res
     });
-    let yara_wasm = await new Module();
-    let yara = new Yara(yara_wasm, rule);
-    await yara.load_yara_rules();
-    yara.check_yara_rules();
-    let res = await yara.yara_runner(txt);
-    return res
+    
 }
 
 async function python_exec(txt){
