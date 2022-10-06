@@ -17,6 +17,6 @@ export class PythonRE {
 
         const ret = spice_namespace.result
         output.value += "\n" + ret;
-        console.log(ret);
+        console.log(ret.toJs());
     }
 }
