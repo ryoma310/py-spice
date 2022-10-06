@@ -27,9 +27,9 @@
         <h3>
             検知エンジン: {{detect_engine}}
         </h3>
-        <!-- <h3>
-            h3. Lorem ipsum dolor sit amet.
-        </h3> -->
+        <h3>
+            タイムスタンプ: {{timestamp}}
+        </h3>
         {% for key, value in inspect_result.items() %}
             <p>{{key}}</p>
             <table class="table">
@@ -42,14 +42,14 @@
                 </thead>
                 <tbody>
                     {% for ind, line_no, message in value %}
-                    <tr align="left">
-                        <td>
+                    <tr>
+                        <td align="right">
                             {{ind}}
                         </td>
-                        <td>
+                        <td align="right">
                             {{line_no}}
                         </td>
-                        <td>
+                        <td align="left">
                             {{message}}
                         </td>
                     </tr>
