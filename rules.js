@@ -4,8 +4,9 @@ async function parseRules() {
     const micropip = pyodide.pyimport("micropip");
     await micropip.install('plyara');
 
-    let data = await window.fetch("./regex_yara.yar");
-    let rules_str = await data.text();
+    const root = await navigator.storage.getDirectory();
+    const rule_handle = await root.getFileHandle("rules.yar", {create: true});
+    let rules_str = await (await rule_handle.getFile()).text();
 
     let shared_variables = { rules_str: rules_str };
     pyodide.registerJsModule("shared_variables", shared_variables);
