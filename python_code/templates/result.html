@@ -1,0 +1,69 @@
+<b>result!!!!! template</b>
+
+<style>
+    .column {
+    float: left;
+    width: 50%;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+    content: "";
+    display: table;
+    clear: both;
+    }
+</style>
+
+{{character}}
+
+<div>
+    <h1>py-spice inspect result</h1>
+</div>
+<div class="row">
+    <div class="column">
+        <h3>
+            検知数: {{detect_num}}
+        </h3>
+        <h3>
+            検知エンジン: {{detect_engine}}
+        </h3>
+        <!-- <h3>
+            h3. Lorem ipsum dolor sit amet.
+        </h3> -->
+        {% for key, value in inspect_result.items() %}
+            <p>{{key}}</p>
+            <table class="table">
+                <thead>
+                    <tr align="left">
+                        <th>#</th>
+                        <th>line No.</th>
+                        <th>message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for ind, line_no, message in value %}
+                    <tr align="left">
+                        <td>
+                            {{ind}}
+                        </td>
+                        <td>
+                            {{line_no}}
+                        </td>
+                        <td>
+                            {{message}}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+    <div class="column">
+        <h2>
+            Source Code
+        </h2>
+        <code>
+            {{input_code}}
+        </code>
+    </div>
+</div>

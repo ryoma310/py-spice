@@ -19,6 +19,31 @@ async function python_exec(txt){
     return res
 }
 
+async function create_result_window(input_code, result){
+    let pyodide = await loadPyodide();
+    // console.log(pyodide);
+
+    const res_html = await window.fetch("../python_code/templates/result.html");
+    const template_html = await res_html.text();
+
+    pyodide.FS.mkdir("/template");
+    pyodide.FS.writeFile("/template/result.html", template_html, { encoding: "utf8" });
+
+    let result_namespace = { inspect_result : result , input_code: input_code };
+    pyodide.registerJsModule("result_namespace", result_namespace);
+
+    const res = await window.fetch("../python_code/create_result_html.py");
+    const code = await res.text();
+
+    await pyodide.loadPackage("jinja2");
+    await pyodide.runPython(code);
+
+    const ret = result_namespace.result_html
+
+    const div_result = document.getElementById("result");
+    div_result.innerHTML = ret;
+}
+
 // async function exec_(code){
 const exec_ = async(code) => {
     // TODO: とりあえず、実行確認だけしてる。それぞれ、amd/armとオプションを使ってどれを使うか条件分岐する。
@@ -27,6 +52,8 @@ const exec_ = async(code) => {
 
     console.log("[insandbox.js] result(yara): %o", yara_result);
     console.log("[insandbox.js] result(python): %o", python_result);
+
+    await create_result_window(code, python_result);
 }
 
 
