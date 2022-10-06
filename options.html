@@ -2,14 +2,12 @@
 <html>
 <head><title>Python or Yara</title></head>
 <body>
-
     <form name = "inspect_method_form">
-        <input type = "radio" name = "inspect_method" value = "yara" /> Yara
-        <input type = "radio" name = "inspect_method" value = "python" /> Python
+        <input type="radio" name="inspect_method" value="yara" id="yara"><label for="yara">YARA</label>
+        <input type="radio" name="inspect_method" value="python" id="python"><label for="python">Python</label>
+        <span id="status"></span>
+        <button type="button" id="save">Save</button>
     </form>
-
-    <div id="status"></div>
-    <button id="save">Save</button>
 
     <button id="show_rules">Show Yara Rules</button>
     <div id="rules_container"></div>
