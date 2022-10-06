@@ -7,23 +7,22 @@ export class Yara {
         this.load_yara_rules();
     }
 
-    #load_yara_rules(){
+    load_yara_rules(){
         // TODO: load this.yara_rules_file to this.yara_rules
         // TODO: 本当はファイルから読み込む。、複数ルールがあってもうまく読み込めるのかは謎。
         // 拡張機能のあるディレクトリ階層下から.yarを読み取る
         this.yara_rules = 'rule foo: bar {strings: $a = "lmn" condition: $a}';
     }
 
-    get_current_yara_rule(){
-        return chrome.storage.local.get("yara_rules", (data) =>{
-            return data["yara_rules"];
-        });
-    }
-    
+    //セットされているyaraルールを取得したい場合は以下の実行でできる
+    //await chrome.storage.local.get("yara_rules");
+
     //txtがyaraルールになっていることが確認された上で呼ばれる必要がある
     append_yara_rule(txt){
-        this.yara_rules += get_current_yara_rule() + "\n" + txt;
-        chrome.storage.local.set("yara_rules", this.yara_rules)
+        chrome.storage.local.get("yara_rules", (data)=> {
+            var yara_rules = data["yara_rules"] + "\n" + txt;
+            chrome.storage.local.set({"yara_rules": yara_rules})
+          });
     }
 
     async yara_runner(txt){
