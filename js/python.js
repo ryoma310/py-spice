@@ -6,10 +6,15 @@ export class PythonRE {
     async runner(txt){
         const output = document.getElementById("output");
         output.value = "Initializing...\n";
+    
+        const res = await window.fetch("../python_code/regex.py");
+        const code = await res.text();
 
-        // とりあえず、入力をpythonに流し込むだけの例
-        // TODO: 関数とか作って、正規表現の検証をする。
-        let ret = await this.pyodide.runPython(txt);
+        const code_A = code.slice(0,691);
+        const code_B = code.slice(691);
+        const code_complete = code_A + txt + code_B;
+
+        let ret = await this.pyodide.runPython(code_complete);
         output.value += "\n" + ret;
         console.log(ret);
     }
