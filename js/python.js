@@ -6,15 +6,16 @@ export class PythonRE {
     async runner(txt){
         const output = document.getElementById("output");
         output.value = "Initializing...\n";
+
+        let spice_namespace = { input_text : txt };
+        this.pyodide.registerJsModule("spice_namespace", spice_namespace);
     
         const res = await window.fetch("../python_code/regex.py");
         const code = await res.text();
 
-        const code_A = code.slice(0,691);
-        const code_B = code.slice(691);
-        const code_complete = code_A + txt + code_B;
+        await this.pyodide.runPython(code);
 
-        let ret = await this.pyodide.runPython(code_complete);
+        const ret = spice_namespace.result
         output.value += "\n" + ret;
         console.log(ret);
     }
