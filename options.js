@@ -70,7 +70,7 @@ async function show_rules(){
 
 var show_rules_clicked = false;
 
-function show_yara_rules() {
+async function show_yara_rules() {
     if (!show_rules_clicked) {
         var container = document.getElementById("rules_container");
         var iframe = document.createElement("iframe");
@@ -81,10 +81,18 @@ function show_yara_rules() {
         console.log("clicked");
         show_rules_clicked = true;
     }
+    const root = await navigator.storage.getDirectory();
+    const rule_handle = await root.getFileHandle("rules.yar", {create: true});
+    let rules_str = await (await rule_handle.getFile()).text();
+
+    document.querySelector("iframe").contentWindow.postMessage({
+      action: 'SyncMessage',
+      message: rules_str
+    }, "*", );
 }
 
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('add_rule').addEventListener('click', add_rule);
 document.getElementById('show_rules').addEventListener('click', show_rules);
-document.getElementById('show_rules').addEventListener('click', show_yara_rules);
+document.getElementById('show_yara_rules').addEventListener('click', show_yara_rules);
