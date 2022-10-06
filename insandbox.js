@@ -19,7 +19,8 @@ async function python_exec(txt){
     return res
 }
 
-async function exec_(code){
+// async function exec_(code){
+const exec_ = async(code) => {
     // TODO: とりあえず、実行確認だけしてる。それぞれ、amd/armとオプションを使ってどれを使うか条件分岐する。
     let yara_result = await yara_exec(code, []);
     let python_result = await python_exec(code);
@@ -36,6 +37,6 @@ window.onload = function () {
     console.log("[insandbox.js] " + url.searchParams.get("s_text"))
     let code = url.searchParams.get("s_text")
 
-    
+
     exec_(code);
 }
