@@ -1,5 +1,5 @@
 {
-    "options_inspection_method_h2": { "message": "Inspection Method"},
+    "options_inspection_method_h2": { "message": "Detect Engine"},
     "options_save": { "message": "Save"},
     "options_title": { "message": "Options"},
     "options_yara_rule": { "message": "YARA Rules"},
