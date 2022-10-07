@@ -1,14 +1,15 @@
-import {Yara} from './js/yara.js';
-import {PythonRE} from './js/python.js';
+import { Yara } from './js/yara.js';
+import { PythonRE } from './js/python.js';
 
-async function yara_exec(txt, rule){
+async function yara_exec(txt, rule) {
     window.parent.postMessage({
         action: 'SyncMessage',
         message: 'request'
-    }, "*", );
+    }, "*",);
 
     window.addEventListener('message', async function (e) {
-        /*if (e.origin !== "chrome-extension://"+ document.domain)  //送信元のドメインが明確な場合は、チェックすることが強く推奨されています
+        //送信元のドメインが明確な場合は、チェックすることが強く推奨されています
+        /*if (e.origin !== "chrome-extension://"+ document.domain) 
             return;
         */
         rule = e.data.message;
@@ -18,10 +19,10 @@ async function yara_exec(txt, rule){
         let res = await yara.yara_runner(txt);
         return res
     });
-    
+
 }
 
-async function python_exec(txt){
+async function python_exec(txt) {
     console.log(txt);
     let pyodide = await loadPyodide();
     // console.log(pyodide);
