@@ -1,9 +1,11 @@
 {
+    "language": {"message": "ja"},
     "options_inspection_method_h2": { "message": "検証エンジン"},
     "options_save": { "message": "保存"},
     "options_title": { "message": "オプション"},
     "options_yara_rule": { "message": "YARAルール"},
     "options_add_rule": { "message": "追加"},
     "options_show_rules": { "message": "参照"},
-    "options_saved": { "message": "正常に保存されました。"}
+    "options_saved": { "message": "正常に保存されました。"},
+    "background": { "message": "コードを検証してコピー"}
 }

@@ -1,9 +1,11 @@
 {
+    "language": {"message": "en"},
     "options_inspection_method_h2": { "message": "Detect Engine"},
     "options_save": { "message": "Save"},
     "options_title": { "message": "Options"},
     "options_yara_rule": { "message": "YARA Rules"},
     "options_add_rule": { "message": "Add Rule"},
     "options_show_rules": { "message": "Show All Rules"},
-    "options_saved": { "message": "Options saved."}
+    "options_saved": { "message": "Options saved."},
+    "background": { "message": "Verify and copy code"}
 }
