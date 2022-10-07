@@ -14,6 +14,40 @@
             </div>
         </div>
         <div class="timestamp">タイムスタンプ：{{timestamp}}</div>
+        <div class="inspect_detail">
+            <h2>検証詳細</h2>
+            <ul>
+                {% for key, value in inspect_result.items() %}
+                <li>
+                    <span class="rule_name">{{key}}</span>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col" data-type="numeric">#</th>
+                                <th scope="col" data-type="numeric">line No.</th>
+                                <th scope="col" data-type="text-long"  class="td_message">message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for ind, line_no, message in value %}
+                            <tr>
+                                <td>
+                                    {{ind}}
+                                </td>
+                                <td>
+                                    {{line_no}}
+                                </td>
+                                <td class="td_message">
+                                    <pre><code>{{message}}</code></pre>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
     <div class="code_container sub_container">
         <h2>ソースコード</h2>

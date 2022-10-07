@@ -1,4 +1,4 @@
-x.main_container {
+.main_container {
     display: flex;
     justify-content: space-between;
 }
@@ -9,14 +9,10 @@ x.main_container {
     padding: 20px;
 }
 
-.sub_container > h2 {
+.sub_container h2 {
     font-size: 1.6rem;
     border-left: 8px solid var(--main-color);
     padding-left: 0.5em;
-}
-
-.inspect_container {
-    /* background-color: red; */
 }
 
 .inspect_cards {
@@ -67,6 +63,32 @@ x.main_container {
     text-align: right;
 }
 
+.inspect_detail > ul {
+    list-style: none;
+    margin-top: 0;
+    padding: 0;
+}
+
+.inspect_detail > ul > li:not(:last-child){
+    margin-bottom: 20px;
+}
+
+.inspect_detail > ul > li > .rule_name{
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    padding-left: 1rem;
+    background-color: #e5f0fe;
+}
+
+.inspect_detail table .td_message {
+    text-align: left;
+}
+
 .code_container {
     /* background-color: blue; */
 }
@@ -89,7 +111,7 @@ footer>p {
 }
 
 /* Clear floats after the columns */
-.row:after {
+/* .row:after {
     content: "";
     display: table;
     clear: both;
@@ -148,7 +170,7 @@ table {
     text-indent: initial;
     border-spacing: 2px;
     border-color: grey;
-}
+} */
 
 /* footer {
     width: 100%;
@@ -170,14 +192,14 @@ footer>p {
     background: #f4f4f4;
 } */
 
-.main {
+/* .main {
     margin: 8px;
 }
 
 .table-header {
     padding: 0.5rem 1rem;
     border-left: 4px solid #000;
-}
+} */
 
 /* .card {
     width: 50%;
@@ -191,7 +213,7 @@ footer>p {
     box-shadow: 0 2px 5px 0 rgba(3, 6, 26, 0.15);
 } */
 
-.card h3 {
+/* .card h3 {
     text-transform: uppercase;
     margin-bottom: 10px;
 }
@@ -203,4 +225,4 @@ footer>p {
 .card-blue-dark {
     background: #1e4c74;
     color: white;
-}
+} */
