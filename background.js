@@ -15,6 +15,15 @@ async function inspect_code(selected_text){
 }
 
 console.log("[background.js] " + "I am background.js");
+fetch("./regex_yara.yar")
+    .then((response) => response.text())
+    .then(async (text) => {
+    const root = await navigator.storage.getDirectory();
+    const rule_handle = await root.getFileHandle("rules.yar", {create: true});
+    const writable = await rule_handle.createWritable();
+    await writable.write(text);
+    await writable.close();
+});
 
 chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({

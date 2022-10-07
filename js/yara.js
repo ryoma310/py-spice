@@ -3,10 +3,11 @@ export class Yara {
         // yara_: yara-wasm module
         // rules_: list of yara rule file names
         this.yara_wasm = yara_;
-        this.yara_rules_file = rules_;
+        this.yara_rules = rules_;
         // this.load_yara_rules();
     }
 
+    /*
     async load_yara_rules(){
         // TODO: load this.yara_rules_file to this.yara_rules
         // TODO: 本当はファイルから読み込む。、複数ルールがあってもうまく読み込めるのかは謎。
@@ -16,6 +17,7 @@ export class Yara {
         this.yara_rules = rules;
         console.log("[yara.js] load rules: " + rules);
     }
+*/
 
     //セットされているyaraルールを取得したい場合は以下の実行でできる
     //await chrome.storage.local.get("yara_rules");

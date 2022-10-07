@@ -2,12 +2,23 @@ import {Yara} from './js/yara.js';
 import {PythonRE} from './js/python.js';
 
 async function yara_exec(txt, rule){
-    let yara_wasm = await new Module();
-    let yara = new Yara(yara_wasm, rule);
-    await yara.load_yara_rules();
-    yara.check_yara_rules();
-    let res = await yara.yara_runner(txt);
-    return res
+    window.parent.postMessage({
+        action: 'SyncMessage',
+        message: 'request'
+    }, "*", );
+
+    window.addEventListener('message', async function (e) {
+        /*if (e.origin !== "chrome-extension://"+ document.domain)  //送信元のドメインが明確な場合は、チェックすることが強く推奨されています
+            return;
+        */
+        rule = e.data.message;
+        let yara_wasm = await new Module();
+        let yara = new Yara(yara_wasm, rule);
+        yara.check_yara_rules();
+        let res = await yara.yara_runner(txt);
+        return res
+    });
+    
 }
 
 async function python_exec(txt){
