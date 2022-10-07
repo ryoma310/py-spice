@@ -50,22 +50,22 @@ async function add_rule() {
     await writable.close();
 }
 
-async function show_rules(){
-    const options = {
-        types: [
-          {
-            description: 'Text Files',
-            accept: {
-              'text/plain': ['.yar'],
-            },
-          },
-        ],
-      };
-      const root = await navigator.storage.getDirectory();
-      const rule_handle = await root.getFileHandle("rules.yar", {create: true});
-      const current_rules = await (await rule_handle.getFile()).text();
-      document.getElementById('current_rules').value = current_rules;
-}
+// async function show_rules(){
+//     const options = {
+//         types: [
+//           {
+//             description: 'Text Files',
+//             accept: {
+//               'text/plain': ['.yar'],
+//             },
+//           },
+//         ],
+//       };
+//       const root = await navigator.storage.getDirectory();
+//       const rule_handle = await root.getFileHandle("rules.yar", {create: true});
+//       const current_rules = await (await rule_handle.getFile()).text();
+//       document.getElementById('current_rules').value = current_rules;
+// }
 
 var show_rules_clicked = false;
 
@@ -106,5 +106,5 @@ document.addEventListener('DOMContentLoaded', setupI18n);
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('add_rule').addEventListener('click', add_rule);
-document.getElementById('show_rules').addEventListener('click', show_rules);
+// document.getElementById('show_rules').addEventListener('click', show_rules);
 document.getElementById('show_rules').addEventListener('click', show_yara_rules);

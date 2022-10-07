@@ -33,8 +33,12 @@ async function displayRules(rules_str) {
 <h3><code>${rule.get("rule_name")}</code></h3>
 <h4>Strings</h4>
 <table>
-    <tr><th>name</th><th>type</th><th>value</th></tr>
-    ${rule.get("strings").map(string => `<tr><td><code>${string.get("name")}</code></td><td>${string.get("type")}</td><td><code>${string.get("value")}</code></td></tr>\n`).join("")}
+    <thead>
+        <tr><th>name</th><th>type</th><th>value</th></tr>
+    </thead>
+    <tbody>
+    ${rule.get("strings").map(string => `<tr><td><code>${string.get("name")}</code></td><td>${string.get("type")}</td><td class="td_message"><code>${string.get("value")}</code></td></tr>\n`).join("")}
+    </tbody>
 </table>
 <h4>Condition</h4>
 <p><code>${rule.get("condition_terms").join(" ")}</code></p>
@@ -42,6 +46,15 @@ async function displayRules(rules_str) {
     });
 }
 
+function hideLoadScreen() {
+    var screen = document.getElementById("loading_screen");
+    screen.style.opacity = 0
+    setTimeout(function(){
+        screen.style.display = "none";
+    }, 300);
+}
+
 window.addEventListener('message', async function (e) {
-    displayRules(e.data.message);
+    await displayRules(e.data.message);
+    hideLoadScreen();
 });
