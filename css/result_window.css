@@ -1,0 +1,131 @@
+body {
+    font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, YuGothic, "游ゴシック sans-serif";
+    color: rgb(40, 49, 53);
+    margin: 0px;
+}
+
+.column {
+    float: left;
+    width: 50%;
+}
+
+.column2 {
+    margin: 8px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    margin-left: 8px;
+    overflow-x: auto;
+}
+
+.table thead tr,
+.table thead th {
+    border-top: none;
+    border-bottom: none !important;
+}
+
+.table tbody th,
+.table tbody td {
+    color: #777;
+    font-weight: 300;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.table th,
+.table td {
+    padding: 0.25rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+th {
+    text-align: inherit;
+    font-size: 15px;
+}
+
+td {
+    white-space: nowrap;
+    max-width: 270px;
+}
+
+.long {
+    white-space: none;
+    min-width: 270px;
+}
+
+table {
+    border-collapse: collapse;
+    display: table;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+footer {
+    width: 100%;
+    height: 30px;
+    background-color: #174a5c;
+    color: white;
+    text-align: center;
+}
+
+footer>p {
+    height: 30px;
+    line-height: 30px;
+}
+
+h1 {
+    margin: 0px;
+    padding: 1rem 2rem;
+    border-bottom: 3px solid #000;
+    background: #f4f4f4;
+}
+
+.main {
+    margin: 8px;
+}
+
+.table-header {
+    padding: 0.5rem 1rem;
+    border-left: 4px solid #000;
+}
+
+.card {
+    width: 50%;
+    height: 80px;
+    margin: 1%;
+    padding: 25px;
+    padding-top: 10px;
+    border-radius: 8px;
+    position: relative;
+    transition: .3s all;
+    box-shadow: 0 2px 5px 0 rgba(3, 6, 26, 0.15);
+}
+
+.card h3 {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 60px;
+}
+
+.card-blue-dark {
+    background: #1e4c74;
+    color: white;
+}
