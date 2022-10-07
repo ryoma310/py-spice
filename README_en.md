@@ -2,7 +2,7 @@
 
 `py-spice` is a Chrome extension that inspects python code snippets for areas that need attention and is sandboxed and executed within wasm to ensure safe behavior.
 
-You can use it by selecting the code snippet in Chrome, right-clicking on it, and pressing `コードを検証してコピー`.
+You can use it by selecting the code snippet in Chrome, right-clicking on it, and pressing `Verify and copy code`.
 
 <img width="344" alt="usage" src="https://user-images.githubusercontent.com/99947844/194550710-c6874a1b-7e90-4525-bf36-131c44cdbc09.png">
 
@@ -71,7 +71,7 @@ You can use it by selecting the code snippet in Chrome, right-clicking on it, an
 
 ---
 ## Known issue
-- `コードを検証してコピー` cannot be performed unless the target tab is selected.
+- `Verify and copy code` cannot be performed unless the target tab is selected.
 
 ---
 ## Dependencies
