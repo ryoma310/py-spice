@@ -11,7 +11,6 @@ async function yara_exec(txt, rule){
         /*if (e.origin !== "chrome-extension://"+ document.domain)  //送信元のドメインが明確な場合は、チェックすることが強く推奨されています
             return;
         */
-        console.log(e.data.message);
         rule = e.data.message;
         let yara_wasm = await new Module();
         let yara = new Yara(yara_wasm, rule);

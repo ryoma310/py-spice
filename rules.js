@@ -1,11 +1,8 @@
-async function parseRules() {
+async function parseRules(rules_str) {
     let pyodide = await loadPyodide();
     await pyodide.loadPackage("micropip");
     const micropip = pyodide.pyimport("micropip");
     await micropip.install('plyara');
-
-    let data = await window.fetch("./regex_yara.yar");
-    let rules_str = await data.text();
 
     let shared_variables = { rules_str: rules_str };
     pyodide.registerJsModule("shared_variables", shared_variables);
@@ -22,9 +19,9 @@ shared_variables.parsed_rules = parser.parse_string(shared_variables.rules_str);
     return shared_variables.parsed_rules.toJs();
 }
 
-async function displayRules() {
+async function displayRules(rules_str) {
 
-    let yara_rules = await parseRules();
+    let yara_rules = await parseRules(rules_str);
 
     var rules_list = document.getElementById("yara_list");
 
@@ -45,4 +42,6 @@ async function displayRules() {
     });
 }
 
-displayRules();
+window.addEventListener('message', async function (e) {
+    displayRules(e.data.message);
+});

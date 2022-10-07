@@ -12,11 +12,6 @@ window.onload = function () {
 }
 
 window.addEventListener('message', async function (e) {
-    console.log("check origin");
-    /*if (e.origin !== "chrome-extension://"+ this.document.domain)  //送信元のドメインが明確な場合は、チェックすることが強く推奨されています
-      return;
-    */
-    console.log("read file");
     const root = await navigator.storage.getDirectory();
     const rule_handle = await root.getFileHandle("rules.yar", {create: true});
     let rules_str = await (await rule_handle.getFile()).text();
