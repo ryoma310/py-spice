@@ -59,6 +59,8 @@ async function create_result_window(input_code, result, engine_name){
     const div_result = document.getElementById("result");
     div_result.innerHTML = ret;
 
+    document.getElementById("copy_btn").addEventListener('click', copyCode);
+
     hideLoadScreen();
 }
 
@@ -107,4 +109,9 @@ window.onload = function () {
     //} else {
     //    console.log("[insandbox.js] error inspect method word")
     //}
+}
+
+function copyCode() {
+    var code = document.getElementById("inspected_code");
+    // コピーするコードが書けません。
 }
