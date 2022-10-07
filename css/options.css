@@ -4,10 +4,6 @@
     margin-top: 100px;
 }
 
-.options_container * {
-    color: #444;
-}
-
 .options_item:not(:last-child) {
     padding: 1em 0;
     border-bottom: 1px solid #ccc;
@@ -15,6 +11,7 @@
 
 .options_item > h2 {
     font-size: 1.6rem;
+    color: #444;
 }
 
 .options_item > form > input[type=radio] {
