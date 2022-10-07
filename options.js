@@ -6,7 +6,7 @@ function save_options() {
     }, function() {
         // Update status to let user know options were saved.
         var status = document.getElementById('save_status');
-        status.textContent = 'Options saved.';
+        status.textContent = chrome.i18n.getMessage('options_saved');
         setTimeout(function() {
             status.textContent = '';
         }, 1000);
@@ -16,6 +16,7 @@ function save_options() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
+    setupI18n();
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.local.get({
         favorite_inspect_method: 'yara'
@@ -90,8 +91,21 @@ async function show_yara_rules() {
     }, "*", );
 }
 
+function setupI18n() {
+    console.log("[options.js] setupI18n");
+    const i18n_elements = document.getElementsByClassName("i18n-label");
+
+    for (let i = 0; i < i18n_elements.length; i++) {
+        console.log(i18n_elements[i]);
+        console.log(i18n_elements[i].getAttribute('i18n-key'));
+        const i18n_key = i18n_elements[i].getAttribute('i18n-key');
+        i18n_elements[i].textContent = chrome.i18n.getMessage(i18n_key);
+    }
+}
+
+// document.addEventListener('load', setupI18n);
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('add_rule').addEventListener('click', add_rule);
 document.getElementById('show_rules').addEventListener('click', show_rules);
-document.getElementById('show_yara_rules').addEventListener('click', show_yara_rules);
+document.getElementById('show_rules').addEventListener('click', show_yara_rules);
