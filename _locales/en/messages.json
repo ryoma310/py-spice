@@ -7,5 +7,10 @@
     "options_add_rule": { "message": "Add Rule"},
     "options_show_rules": { "message": "Show All Rules"},
     "options_saved": { "message": "Options saved."},
-    "background": { "message": "Verify and copy code"}
+    "background": { "message": "Verify and copy code"},
+    "defpop_validation_engine": { "message": "Validation engine"},
+    "defpop_how": { "message": "How to verify and copy code"},
+    "defpop_select": { "message": "Select the area you want to verify in the chrome screen"},
+    "defpop_view": { "message": "Right-click to display context menu"},
+    "defpop_copy": { "message": "Press the <b>Verify and copy code</b>"}
 }
