@@ -6,7 +6,8 @@ English version is [here](README_en.md).
 
 コードスニペットをChrome内で選択した状態で、右クリックをして`コードを検証してコピー`を押すことで利用することができます。
 
-<img width="344" alt="usage" src="https://user-images.githubusercontent.com/99947844/194550710-c6874a1b-7e90-4525-bf36-131c44cdbc09.png">
+<img width="344" alt="usage" src="https://user-images.githubusercontent.com/99947844/194580666-28d755e1-dad6-46f9-bce0-afaaa1869caf.png">
+
 
 ---
 ## 動作の様子
