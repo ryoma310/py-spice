@@ -55,10 +55,9 @@ You can use it by selecting the code snippet in Chrome, right-clicking on it, an
         ```bash
         git clone https://github.com/ryoma310/py-spice.git
         ```
-    2. chromeの拡張機能画面(chrome://extensions/)を開く。
-    3. Open extensions page (chrome://extensions/).
-    4. Activate `Developer mode` from the top right button
-    5. Selecting the cloned directory from `Load Unpacked` will install them.
+    2. Open extensions page (chrome://extensions/).
+    3. Activate `Developer mode` from the top right button
+    4. Selecting the cloned directory from `Load Unpacked` will install them.
 
 - Follow this [link](build_support/libyara-wasm/README.md) for instructions on how to build [libyara-wasm](https://github.com/mattnotmitt/libyara-wasm).
 
