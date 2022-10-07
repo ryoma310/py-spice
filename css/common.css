@@ -2,15 +2,18 @@
     --main-color: #1e50a2;
 }
 
-body {
+/* body {
     margin: 0;
-}
+} */
 
 .header {
     background-color: var(--main-color);
     height: 80px;
     width: 100%;
-    box-shadow: 0px 5px 20px #888;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-shadow: 0px 5px 20px #aaa;
 }
 
 .header>h1 {
@@ -22,8 +25,9 @@ body {
 }
 
 .option_container {
-    width: 1000px;
+    width: 600px;
     margin: 0 auto;
+    margin-top: 120px;
 }
 
 .option_container * {
@@ -34,11 +38,68 @@ body {
     font-size: 1.6rem;
 }
 
+.option_container > form > input[type=radio] {
+    display: none;
+}
+
+.option_container > form > label {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    height: 3em;
+    font-size: 1.2em;
+    line-height: 3em;
+    color: #ccc;
+    border: 1.6px solid #ccc;
+    border-radius: 0.4em;
+    padding-left: 3.2em; 
+    margin-bottom: 5px;
+    position: relative;
+}
+
+.option_container > form > label:hover {
+    background-color: #eee;
+}
+
+.option_container > form > input[type=radio]:checked + label {
+    color: var(--main-color);
+    border: 1.6px solid var(--main-color);
+}
+
+.option_container > form > label:before {
+    position: absolute;
+    display: block;
+    width: 1.6em;
+    height: 1.6em;
+    top: 0.6em;
+    left: 1em;
+    content: "";
+    box-sizing: border-box;
+    border: 2.4px solid #ccc;
+    border-radius: 50%;
+}
+
+.option_container > form > input[type=radio]:checked + label:before {
+    border: 2.4px solid var(--main-color);
+}
+
+.option_container > form > input[type=radio]:checked + label:after {
+    position: absolute;
+    display: block;
+    width: 0.8em;
+    height: 0.8em;
+    top: 1em;
+    left: 1.4em;
+    content: "";
+    background-color: var(--main-color);
+    border-radius: 50%;
+}
+
 .btn {
     display: inline-block;
     color: var(--main-color);
     background-color: white;
-    font-size: 1rem;
+    font-size: 1.2em;
     height: 2.4em;
     line-height: 2.4em;
     border: 1.6px solid var(--main-color);
