@@ -16,7 +16,6 @@ function save_options() {
 // Restores select box and checkbox state using the preferences
 // stored in chrome.storage.
 function restore_options() {
-    setupI18n();
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.local.get({
         favorite_inspect_method: 'yara'
@@ -103,7 +102,7 @@ function setupI18n() {
     }
 }
 
-// document.addEventListener('load', setupI18n);
+document.addEventListener('DOMContentLoaded', setupI18n);
 document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('add_rule').addEventListener('click', add_rule);
