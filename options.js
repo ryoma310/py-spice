@@ -94,4 +94,4 @@ document.addEventListener('DOMContentLoaded', restore_options);
 document.getElementById('save').addEventListener('click', save_options);
 document.getElementById('add_rule').addEventListener('click', add_rule);
 document.getElementById('show_rules').addEventListener('click', show_rules);
-document.getElementById('show_yara_rules').addEventListener('click', show_yara_rules);
+document.getElementById('show_rules').addEventListener('click', show_yara_rules);
