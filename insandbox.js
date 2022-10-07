@@ -46,8 +46,19 @@ window.onload = function () {
     console.log("[insandbox.js] " + "inside_sundbox")
     console.log("[insandbox.js] " + url)
     console.log("[insandbox.js] " + url.searchParams.get("s_text"))
+    console.log("[insandbox.js] " + url.searchParams.get("inspect_method"))
     let code = url.searchParams.get("s_text")
+    let inspect_method = url.searchParams.get("inspect_method")
 
+    if (inspect_method == 'yara') {
+        let yara_result = yara_exec(code, []);
+        console.log("[insandbox.js] result(yara): %o", yara_result);
+    } else if (inspect_method == 'python') {
+        let python_result = python_exec(code);
+        console.log("[insandbox.js] result(python): %o", python_result);
+    } else {
+        console.log("[insandbox.js] error inspect method word")
+    }
 
-    exec_(code);
+    // exec_(code);
 }
