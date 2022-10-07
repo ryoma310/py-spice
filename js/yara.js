@@ -44,6 +44,9 @@ export class Yara {
     }
 
     async yara_runner(txt){
+        const output = document.getElementById("output");
+        output.value = "Initializing by YARA...\n";
+
         console.log("Run yara.\ntarget: " + txt);
         // this.yara_rules = get_current_yara_rule();
         const yara_matches = await this.yara_wasm.run(txt, this.yara_rules);
@@ -66,12 +69,16 @@ export class Yara {
         }
         const d = new Date();
         const formatted_datetime = `${d.getFullYear()}-${(d.getMonth()+1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')} ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padStart(2, '0')}`;
-        const ret = new Map();
+        let ret = new Map();
         ret.set("count", match_result_ls.length);
         ret.set("timestamp", formatted_datetime);
         ret.set("detect", match_result_ls);
 
-        console.log("[yara.js] result: " + ret);
+        output.value += "\n detected count: " + ret.get("count");
+
+        console.log(ret)
+        console.log("[yara.js] result: " + ret.get("count"));
+        console.log("[yara.js] result: " + match_result_ls);
 
         return ret
     }
