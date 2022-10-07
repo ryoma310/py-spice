@@ -44,11 +44,11 @@ export class Yara {
     }
 
     get_linenumber(txt, index){
+        let encoder = new TextEncoder();
+        let bytes = encoder.encode(txt);
         let lines = 1;
-        console.log("debugging!! " + index)
         for (let i = 0;i < index;i++){
-            console.log(txt.charAt(i));
-            if (txt.charAt(i) === '\n')lines++;
+            if(bytes[i] === 10)lines++;
         }
         return lines;
     }
@@ -67,7 +67,7 @@ export class Yara {
             // let metadata = {};
             const rule = yara_matches.matchedRules.get(i);
 
-            const matches = rule.resolvedMatches
+            const matches = rule.resolvedMatches;
             for (let j = 0; j < matches.size(); j++) {
                 const match = matches.get(j);
                 // console.log("matched: ", match)
