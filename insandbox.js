@@ -18,7 +18,7 @@ async function yara_exec(txt, rule) {
         yara.check_yara_rules();
         let res = await yara.yara_runner(txt);
         console.log("[insandbox.js] result(yara): %o", res);
-        await create_result_window(txt, res);
+        await create_result_window(txt, res, "yara");
     });
 
 }
@@ -30,12 +30,12 @@ async function python_exec(txt) {
     let python_re = new PythonRE(pyodide);
     let res = await python_re.runner(txt);
     console.log("[insandbox.js] result(python): %o", res);
-    await create_result_window(txt, res);
+    await create_result_window(txt, res, "python");
     // return res
 }
 
 
-async function create_result_window(input_code, result){
+async function create_result_window(input_code, result, engine_name){
     let pyodide = await loadPyodide();
     // console.log(pyodide);
 
@@ -45,7 +45,7 @@ async function create_result_window(input_code, result){
     pyodide.FS.mkdir("/template");
     pyodide.FS.writeFile("/template/result.html", template_html, { encoding: "utf8" });
 
-    let result_namespace = { inspect_result : result , input_code: input_code };
+    let result_namespace = { inspect_result : result , input_code: input_code, engine_name: engine_name };
     pyodide.registerJsModule("result_namespace", result_namespace);
 
     const res = await window.fetch("../python_code/create_result_html.py");

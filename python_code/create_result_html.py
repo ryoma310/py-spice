@@ -16,12 +16,12 @@ print(inspect_result_raw)
 inspect_result_formated = defaultdict(list)
 for i in inspect_result_raw["detect"]:
     # append, (<No.>, <line no.>, <message>)
-    inspect_result_formated[i["type"]].append( (len(inspect_result_formated[i["type"]]), 2, i["message"]) )
+    inspect_result_formated[i["type"]].append( (len(inspect_result_formated[i["type"]]), i["line_number"], i["message"]) )
 
 print(inspect_result_formated)
 data = {
     "detect_num": inspect_result_raw["count"],
-    "detect_engine": "python",
+    "detect_engine": result_namespace.engine_name,
     "timestamp": inspect_result_raw["timestamp"],
     "input_code": html.escape(result_namespace.input_code),
     "inspect_result": inspect_result_formated
