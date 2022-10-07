@@ -4,7 +4,8 @@
 
 You can use it by selecting the code snippet in Chrome, right-clicking on it, and pressing `Verify and copy code`.
 
-<img width="344" alt="usage" src="https://user-images.githubusercontent.com/99947844/194550710-c6874a1b-7e90-4525-bf36-131c44cdbc09.png">
+<img width="336" alt="readme_en_verify_and_copy_code" src="https://user-images.githubusercontent.com/59504885/194576841-aa2bcad5-6479-40cc-a247-82e87517dddc.png">
+
 
 ---
 ## How it works
