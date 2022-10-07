@@ -16,13 +16,25 @@ match_strings = {
     "subprocess": ["subprocess.run", "shell=True", "subprocess.PIPE", "subprocess.DEBNULL", "subprocess.STDOUT", "subprocess.call", "subprocess.check_call", "subprocess.check_output", "subprocess.Popen", "asyncio.create_subprocess_exec"]
 }
 
+intext = spice_namespace.input_text
+brlist = []
+for i in range(0, len(intext)):
+    if intext[i] == '\n':
+        brlist.append(i)
+
+def get_linenumber(index):
+    for i in range(0, len(brlist)):
+        if index < brlist[i]:
+            return i+1
+    return len(brlist)
+
 match_result_ls = list()
 for k, v in match_strings.items():
     for pattern in v:
         p = re.compile(pattern)
         result = p.finditer(spice_namespace.input_text)
         for m in result:
-            match_result_ls.append({"type": k, "message": str(m)})
+            match_result_ls.append({"type": k, "line": get_linenumber(m.start()), "match": m.string[m.start():m.end()]})
 ret = {
     "count": len(match_result_ls),
     "timestamp": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),

@@ -43,7 +43,20 @@ export class Yara {
 		}
     }
 
+    get_linenumber(txt, index){
+        let encoder = new TextEncoder();
+        let bytes = encoder.encode(txt);
+        let lines = 1;
+        for (let i = 0;i < index;i++){
+            if(bytes[i] === 10)lines++;
+        }
+        return lines;
+    }
+
     async yara_runner(txt){
+        const output = document.getElementById("output");
+        output.value = "Initializing by YARA...\n\n";
+
         console.log("Run yara.\ntarget: " + txt);
         // this.yara_rules = get_current_yara_rule();
         const yara_matches = await this.yara_wasm.run(txt, this.yara_rules);
@@ -54,11 +67,14 @@ export class Yara {
             // let metadata = {};
             const rule = yara_matches.matchedRules.get(i);
 
-            const matches = rule.resolvedMatches
+            const matches = rule.resolvedMatches;
             for (let j = 0; j < matches.size(); j++) {
                 const match = matches.get(j);
                 // console.log("matched: ", match)
                 const match_result = new Map();
+                console.log(match);
+                output.value += "match!! : " + match.data;
+                output.value += "\nline : " + this.get_linenumber(txt, match["location"]) + "\n";
                 match_result.set("type", rule.ruleName);
                 match_result.set("message", JSON.stringify(match));
                 match_result_ls.push(match_result);
@@ -66,12 +82,16 @@ export class Yara {
         }
         const d = new Date();
         const formatted_datetime = `${d.getFullYear()}-${(d.getMonth()+1).toString().padStart(2, '0')}-${d.getDate().toString().padStart(2, '0')} ${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}:${d.getSeconds().toString().padStart(2, '0')}`;
-        const ret = new Map();
+        let ret = new Map();
         ret.set("count", match_result_ls.length);
         ret.set("timestamp", formatted_datetime);
         ret.set("detect", match_result_ls);
 
-        console.log("[yara.js] result: " + ret);
+        output.value += "\n detected count: " + ret.get("count");
+
+        console.log(ret)
+        console.log("[yara.js] result: " + ret.get("count"));
+        console.log("[yara.js] result: " + match_result_ls);
 
         return ret
     }
