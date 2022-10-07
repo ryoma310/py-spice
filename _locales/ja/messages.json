@@ -1,5 +1,5 @@
 {
-    "options_inspection_method_h2": { "message": "検証方法"},
+    "options_inspection_method_h2": { "message": "検証エンジン"},
     "options_save": { "message": "保存"},
     "options_title": { "message": "オプション"},
     "options_yara_rule": { "message": "YARAルール"},
