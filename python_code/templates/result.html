@@ -1,9 +1,25 @@
-<div>
-    <h1>py-spice inspect result</h1>
-</div>
+<div class="header"><h1>py-spice Inspect Result</h1></div>
 
-<div class="main">
-    <div class="row">
+<div class="main_container">
+    <div class="inspect_container sub_container">
+        <h2>検証結果</h2>
+        <div class="inspect_cards">
+            <div class="card num_detect">
+                <span class="card_title">検知数</span>
+                <span class="card_content">{{detect_num}}</span>
+            </div>
+            <div class="card detect_engine">
+                <span class="card_title">検知エンジン</span>
+                <span class="card_content">{{detect_engine}}</span>
+            </div>
+        </div>
+        <div class="timestamp">タイムスタンプ：{{timestamp}}</div>
+    </div>
+    <div class="code_container sub_container">
+        <h2>ソースコード</h2>
+        <pre><code>{{input_code}}</code></pre>
+    </div>
+    <!-- <div class="row">
         <div class="column">
             <div class="row">
                 <div class="column">
@@ -63,10 +79,10 @@
             {{input_code}}
         </code>
         </div>
-    </div>
+    </div> -->
 </div>
 </div>
 
 <footer>
-    <p>all rights 的なやつ</p>
+    <p>py-spice</p>
 </footer>

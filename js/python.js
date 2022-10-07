@@ -4,8 +4,8 @@ export class PythonRE {
     }
 
     async runner(txt){
-        const output = document.getElementById("output");
-        output.value = "Initializing...\n";
+        // const output = document.getElementById("output");
+        // output.value = "Initializing...\n";
 
         let spice_namespace = { input_text : txt };
         this.pyodide.registerJsModule("spice_namespace", spice_namespace);
@@ -16,7 +16,7 @@ export class PythonRE {
         await this.pyodide.runPython(code);
 
         const ret = spice_namespace.result
-        output.value += "\n" + ret;
+        // output.value += "\n" + ret;
         console.log("[python.js] result: " + ret.toJs());
 
         return ret.toJs()

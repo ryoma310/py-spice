@@ -2,7 +2,9 @@
 <html>
 <head>
     <script src="popup.js"></script>
-    <style>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/result_window.css">
+    <!-- <style>
         .container {
           position: relative;
           overflow: hidden;
@@ -23,15 +25,11 @@
         body {
           margin: 0px;
         }
-    </style>
+    </style> -->
 </head>
 <body>
-    <h3>Extension!!!</h3>
-    <div>Pyodide test page</div>
-    <br>
-    <div class="container" style="height:1000px; margin: 0px;">
+    <div class="container">
         <iframe id="iframe" class="responsive-iframe" src="about:blank" frameborder="0"></iframe> <!-- replaced by script -->
     </div>
-    <a href="rules.html" target="_blank" rel="noopener noreferrer">List of Yara Rules</a>
 </body>
 </html>
