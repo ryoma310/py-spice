@@ -7,11 +7,12 @@ async function inspect_code(selected_text){
     let url = new URL(chrome.runtime.getURL('./popup.html'));
     url.searchParams.append('s_text', selected_text);
     console.log("[background.js] " + url.href)
-    chrome.windows.create({
-        url : url.href,
-        focused : true,
-        type : "popup"
-    });
+    // chrome.windows.create({
+    //     url : url.href,
+    //     focused : true,
+    //     type : "popup"
+    // });
+    chrome.tabs.create({url : url.href});
 }
 
 console.log("[background.js] " + "I am background.js");

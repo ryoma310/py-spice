@@ -1,0 +1,228 @@
+.main_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.sub_container {
+    width: 50%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.sub_container h2 {
+    font-size: 1.6rem;
+    border-left: 8px solid var(--main-color);
+    padding-left: 0.5em;
+}
+
+.inspect_cards {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.card {
+    width: 48%;
+    height: 100px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    position: relative;
+    font-weight: bold;
+}
+
+.card > .card_title {
+    font-size: 1.2rem;
+    display: inline-block;
+    position: absolute;
+    top: 0.4em;
+    left:0.6em;
+}
+
+.card > .card_content {
+    font-size: 2.4rem;
+    display: inline-block;
+    position: absolute;
+    bottom: 0.4em;
+    right:0.6em;
+}
+
+.card.num_detect {
+    background-color: var(--main-color);
+    color: white;
+}
+
+.card.detect_engine {
+    background-color: white;
+    color: var(--main-color);
+    border: 2px solid var(--main-color)
+}
+
+.inspect_container .timestamp {
+    font-size: 1rem;
+    color: #888;
+    text-align: right;
+}
+
+.inspect_detail > ul {
+    list-style: none;
+    margin-top: 0;
+    padding: 0;
+}
+
+.inspect_detail > ul > li:not(:last-child){
+    margin-bottom: 20px;
+}
+
+.inspect_detail > ul > li > .rule_name{
+    font-size: 1.6rem;
+    font-weight: bold;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 3rem;
+    line-height: 3rem;
+    padding-left: 1rem;
+    background-color: #e5f0fe;
+}
+
+.inspect_detail table .td_message {
+    text-align: left;
+}
+
+.code_container {
+    /* background-color: blue; */
+}
+
+.code_container > pre {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow: scroll;
+    font-size: 1rem;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 0.4em;
+}
+
+footer>p {
+    font-size: 0.8rem;
+    color: #888;
+    text-align: center;
+}
+
+/* Clear floats after the columns */
+/* .row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.table-responsive {
+    display: block;
+    width: 100%;
+    margin-left: 8px;
+    overflow-x: auto;
+}
+
+.table thead tr,
+.table thead th {
+    border-top: none;
+    border-bottom: none !important;
+}
+
+.table tbody th,
+.table tbody td {
+    color: #777;
+    font-weight: 300;
+}
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    color: #212529;
+}
+
+.table th,
+.table td {
+    padding: 0.25rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+
+th {
+    text-align: inherit;
+    font-size: 15px;
+}
+
+td {
+    white-space: nowrap;
+    max-width: 270px;
+}
+
+.long {
+    white-space: none;
+    min-width: 270px;
+}
+
+table {
+    border-collapse: collapse;
+    display: table;
+    text-indent: initial;
+    border-spacing: 2px;
+    border-color: grey;
+} */
+
+/* footer {
+    width: 100%;
+    height: 30px;
+    background-color: #174a5c;
+    color: white;
+    text-align: center;
+}
+
+footer>p {
+    height: 30px;
+    line-height: 30px;
+} */
+
+/* h1 {
+    margin: 0px;
+    padding: 1rem 2rem;
+    border-bottom: 3px solid #000;
+    background: #f4f4f4;
+} */
+
+/* .main {
+    margin: 8px;
+}
+
+.table-header {
+    padding: 0.5rem 1rem;
+    border-left: 4px solid #000;
+} */
+
+/* .card {
+    width: 50%;
+    height: 80px;
+    margin: 1%;
+    padding: 25px;
+    padding-top: 10px;
+    border-radius: 8px;
+    position: relative;
+    transition: .3s all;
+    box-shadow: 0 2px 5px 0 rgba(3, 6, 26, 0.15);
+} */
+
+/* .card h3 {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.card p {
+    margin-bottom: 60px;
+}
+
+.card-blue-dark {
+    background: #1e4c74;
+    color: white;
+} */
