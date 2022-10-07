@@ -1,3 +1,5 @@
+English version is [here](README_en.md).
+
 # py-spice: Python SniPet Inspector on Chrome Exetnsion
 
 `py-spice`はpythonのコードスニペットに(悪性な挙動をする可能性があり)注意する必要のある箇所があるかを検査するChrome拡張です。wasm内でサンドボックス化して実行されるので安全に確かめることができます。

@@ -7,12 +7,20 @@ async function inspect_code(selected_text){
     let url = new URL(chrome.runtime.getURL('./popup.html'));
     url.searchParams.append('s_text', selected_text);
     console.log("[background.js] " + url.href)
-    // chrome.windows.create({
-    //     url : url.href,
-    //     focused : true,
-    //     type : "popup"
-    // });
-    chrome.tabs.create({url : url.href});
+
+    chrome.storage.local.get({
+        favorite_inspect_window: 'new_tab'
+    }, function(items) {
+        if (items.favorite_inspect_window == 'new_tab') {
+            chrome.tabs.create({url : url.href});
+        } else if (items.favorite_inspect_window == 'popup') {
+            chrome.windows.create({
+                url : url.href,
+                focused : true,
+                type : "popup"
+            });
+        }
+    });
 }
 
 console.log("[background.js] " + "I am background.js");
