@@ -58,6 +58,8 @@ async function create_result_window(input_code, result, engine_name){
 
     const div_result = document.getElementById("result");
     div_result.innerHTML = ret;
+
+    hideLoadScreen();
 }
 
 // async function exec_(code){
@@ -75,6 +77,14 @@ const exec_ = async(code, inspect_method) => {
 
 
     //await create_result_window(code, python_result);
+}
+
+function hideLoadScreen() {
+    var screen = document.getElementById("loading_screen");
+    screen.style.opacity = 0
+    setTimeout(function(){
+        screen.style.display = "none";
+    }, 300);
 }
 
 window.onload = function () {
