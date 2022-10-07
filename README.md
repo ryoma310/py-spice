@@ -10,9 +10,12 @@ English version is [here](README_en.md).
 
 <img width="344" alt="usage" src="https://user-images.githubusercontent.com/99947844/194580666-28d755e1-dad6-46f9-bce0-afaaa1869caf.png">
 
+Chromeの言語設定が日本語の場合は表示言語が日本語で、それ以外の場合は表示言語が英語になります。
+
 
 ---
 ## 動作の様子
+![demo](./images/demo.gif)
 
 ---
 ## インストール方法
