@@ -7,21 +7,21 @@
 </head>
 <body>
     <div class="header">
-        <h1>Options</h1>
+        <h1 class = "i18n-label" i18n-key = "options_title">Options</h1>
     </div>
     <div class="options_container">
         <div class="options_item">
-            <h2>Inspection Method</h2>
+            <h2 class = "i18n-label" i18n-key = 'options_inspection_method_h2'>Inspection Method</h2>
             <form name="inspect_method_form">
                 <input type="radio" name="inspect_method" value="yara" id="yara"><label for="yara">YARA</label>
                 <input type="radio" name="inspect_method" value="python" id="python"><label for="python">Python</label>
-                <a class="btn" id="save">Save</a><span id="save_status"></span>
+                <a class="btn i18n-label" id="save" i18n-key = 'options_save'>Save</a><span id="save_status"></span>
             </form>
         </div>
         <div class="options_item">
-            <h2>YARA Rules</h2>
-            <a class="btn" id="add_rule">Add Rule</a>
-            <a class="btn" id="show_rules">Show All Rules</a>
+            <h2 class = "i18n-label" i18n-key = "options_yara_rule">YARA Rules</h2>
+            <a class="btn i18n-label" id="add_rule" i18n-key = 'options_add_rule'>Add Rule</a>
+            <a class="btn i18n-label" id="show_rules" i18n-key = 'options_show_rules'>Show All Rules</a>
             <article id="current_rules"></article>
             
             <!-- <a class="btn" id="show_rules">Show YARA Rules</a> -->
