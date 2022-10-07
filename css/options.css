@@ -65,7 +65,7 @@
     border-radius: 50%;
 }
 
-#save_status {
+.save_status {
     display: inline-block;
     color: #32cd32;
     font-size: 0.8rem;

@@ -1,15 +1,17 @@
 // Saves options to chrome.storage
 function save_options() {
     var inspect_method = document.inspect_method_form.inspect_method.value;
+    var inspect_window = document.inspect_window_form.inspect_window.value;
     chrome.storage.local.set({
-        favorite_inspect_method: inspect_method
+        favorite_inspect_method: inspect_method,
+        favorite_inspect_window: inspect_window
     }, function() {
         // Update status to let user know options were saved.
-        var status = document.getElementById('save_status');
-        status.textContent = chrome.i18n.getMessage('options_saved');
-        setTimeout(function() {
-            status.textContent = '';
-        }, 1000);
+        // var status = document.getElementById('save_inspection_method_status');
+        // status.textContent = chrome.i18n.getMessage('options_saved');
+        // setTimeout(function() {
+        //     status.textContent = '';
+        // }, 1000);
     });
 }
 
@@ -18,9 +20,11 @@ function save_options() {
 function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.local.get({
-        favorite_inspect_method: 'yara'
+        favorite_inspect_method: 'yara',
+        favorite_inspect_window: 'new_tab'
     }, function(items) {
         document.inspect_method_form.inspect_method.value = items.favorite_inspect_method;
+        document.inspect_window_form.inspect_window.value = items.favorite_inspect_window;
     });
 }
 
@@ -104,7 +108,12 @@ function setupI18n() {
 
 document.addEventListener('DOMContentLoaded', setupI18n);
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click', save_options);
+// document.getElementById('save_inspection_method').addEventListener('click', save_options);
 document.getElementById('add_rule').addEventListener('click', add_rule);
 // document.getElementById('show_rules').addEventListener('click', show_rules);
 document.getElementById('show_rules').addEventListener('click', show_yara_rules);
+
+let radio_btns = document.querySelectorAll(`input[type='radio']`);
+radio_btns.forEach(btn => {
+    btn.addEventListener('change', save_options);
+});

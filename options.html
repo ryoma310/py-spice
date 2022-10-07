@@ -7,21 +7,29 @@
 </head>
 <body>
     <div class="header">
-        <h1 class = "i18n-label" i18n-key = "options_title">Options</h1>
+        <h1 class="i18n-label" i18n-key="options_title">Options</h1>
     </div>
     <div class="main_container">
         <div class="options_item">
-            <h2 class = "i18n-label" i18n-key = 'options_inspection_method_h2'>Inspection Method</h2>
             <form name="inspect_method_form">
+                <h2 class="i18n-label" i18n-key='options_inspection_method_h2'>Detect Engine</h2>
                 <input type="radio" name="inspect_method" value="yara" id="yara"><label for="yara">YARA</label>
                 <input type="radio" name="inspect_method" value="python" id="python"><label for="python">Python</label>
-                <a class="btn i18n-label" id="save" i18n-key = 'options_save'>Save</a><span id="save_status"></span>
+                <span id="save_inspection_method_status" class="save_status"></span>
             </form>
         </div>
         <div class="options_item">
-            <h2 class = "i18n-label" i18n-key = "options_yara_rule">YARA Rules</h2>
-            <a class="btn i18n-label" id="add_rule" i18n-key = 'options_add_rule'>Add Rule</a>
-            <a class="btn i18n-label" id="show_rules" i18n-key = 'options_show_rules'>Show All Rules</a>
+            <form name="inspect_window_form">
+                <h2>Inspect Window</h2>
+                <input type="radio" name="inspect_window" value="new_tab" id="new_tab"><label for="new_tab">New Tab</label>
+                <input type="radio" name="inspect_window" value="popup" id="popup"><label for="popup">Popup Window</label>
+                <span id="save_inspect_window_status" class="save_status"></span>
+            </form>
+        </div>
+        <div class="options_item">
+            <h2 class="i18n-label" i18n-key="options_yara_rule">YARA Rules</h2>
+            <a class="btn i18n-label" id="add_rule" i18n-key='options_add_rule'>Add Rule</a>
+            <a class="btn i18n-label" id="show_rules" i18n-key='options_show_rules'>Show All Rules</a>
             <article id="current_rules"></article>
             
             <!-- <a class="btn" id="show_rules">Show YARA Rules</a> -->
