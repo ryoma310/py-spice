@@ -4,6 +4,8 @@
 
 コードスニペットをChrome内で選択した状態で、右クリックをして`コードを検証してコピー`を押すことで利用することができます。
 
+<img width="344" alt="usage" src="https://user-images.githubusercontent.com/99947844/194550710-c6874a1b-7e90-4525-bf36-131c44cdbc09.png">
+
 ---
 ## 動作の様子
 
