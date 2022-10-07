@@ -43,9 +43,19 @@ export class Yara {
 		}
     }
 
+    get_linenumber(txt, index){
+        let lines = 1;
+        console.log("debugging!! " + index)
+        for (let i = 0;i < index;i++){
+            console.log(txt.charAt(i));
+            if (txt.charAt(i) === '\n')lines++;
+        }
+        return lines;
+    }
+
     async yara_runner(txt){
         const output = document.getElementById("output");
-        output.value = "Initializing by YARA...\n";
+        output.value = "Initializing by YARA...\n\n";
 
         console.log("Run yara.\ntarget: " + txt);
         // this.yara_rules = get_current_yara_rule();
@@ -62,6 +72,9 @@ export class Yara {
                 const match = matches.get(j);
                 // console.log("matched: ", match)
                 const match_result = new Map();
+                console.log(match);
+                output.value += "match!! : " + match.data;
+                output.value += "\nline : " + this.get_linenumber(txt, match["location"]) + "\n";
                 match_result.set("type", rule.ruleName);
                 match_result.set("message", JSON.stringify(match));
                 match_result_ls.push(match_result);

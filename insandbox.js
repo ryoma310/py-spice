@@ -17,7 +17,7 @@ async function yara_exec(txt, rule) {
         let yara = new Yara(yara_wasm, rule);
         yara.check_yara_rules();
         let res = await yara.yara_runner(txt);
-        return res
+        console.log(res);
     });
 
 }
