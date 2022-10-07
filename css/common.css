@@ -108,6 +108,17 @@ body {
     position: relative;
 }
 
+#rules_container {
+    width: 100%;
+    margin: 5px 0;
+}
+
+#rules_container > iframe {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 0.4em;
+}
+
 .btn {
     display: inline-block;
     color: var(--main-color);
