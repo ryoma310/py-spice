@@ -5,7 +5,7 @@ export class PythonRE {
 
     async runner(txt){
         const output = document.getElementById("output");
-        output.value = "Initializing...\n";
+        output.value = "Initializing by Python...\n";
 
         let spice_namespace = { input_text : txt };
         this.pyodide.registerJsModule("spice_namespace", spice_namespace);
