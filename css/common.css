@@ -95,6 +95,14 @@
     border-radius: 50%;
 }
 
+#save_status {
+    display: inline-block;
+    color: #32cd32;
+    font-size: 0.8rem;
+    margin-left: 10px;
+    position: relative;
+}
+
 .btn {
     display: inline-block;
     color: var(--main-color);

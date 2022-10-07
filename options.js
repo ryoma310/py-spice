@@ -5,11 +5,11 @@ function save_options() {
         favorite_inspect_method: inspect_method
     }, function() {
         // Update status to let user know options were saved.
-        var status = document.getElementById('status');
+        var status = document.getElementById('save_status');
         status.textContent = 'Options saved.';
         setTimeout(function() {
             status.textContent = '';
-        }, 750);
+        }, 1000);
     });
 }
 
