@@ -1,69 +1,206 @@
-<b>result!!!!! template</b>
-
 <style>
+    body {
+        font-family: "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ ProN W3", Meiryo, メイリオ, YuGothic, "游ゴシック sans-serif";
+        color: rgb(40, 49, 53);
+        margin: 0px;
+    }
+
     .column {
-    float: left;
-    width: 50%;
+        float: left;
+        width: 50%;
+    }
+
+    .column2 {
+        margin: 8px;
     }
 
     /* Clear floats after the columns */
     .row:after {
-    content: "";
-    display: table;
-    clear: both;
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .table-responsive {
+        display: block;
+        width: 100%;
+        margin-left: 8px;
+        overflow-x: auto;
+    }
+
+    .table thead tr,
+    .table thead th {
+        border-top: none;
+        border-bottom: none !important;
+    }
+
+    .table tbody th,
+    .table tbody td {
+        color: #777;
+        font-weight: 300;
+    }
+
+    .table {
+        width: 100%;
+        margin-bottom: 1rem;
+        color: #212529;
+    }
+
+    .table th,
+    .table td {
+        padding: 0.25rem;
+        vertical-align: top;
+        border-top: 1px solid #dee2e6;
+    }
+
+    th {
+        text-align: inherit;
+        font-size: 15px;
+    }
+
+    td {
+        white-space: nowrap;
+        max-width: 270px;
+    }
+
+    .long {
+        white-space: none;
+        min-width: 270px;
+    }
+
+    table {
+        border-collapse: collapse;
+        display: table;
+        text-indent: initial;
+        border-spacing: 2px;
+        border-color: grey;
+    }
+
+    footer {
+        width: 100%;
+        height: 30px;
+        background-color: #174a5c;
+        color: white;
+        text-align: center;
+    }
+
+    footer>p {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    h1 {
+        margin: 0px;
+        padding: 1rem 2rem;
+        border-bottom: 3px solid #000;
+        background: #f4f4f4;
+    }
+
+    .main {
+        margin: 8px;
+    }
+
+    .table-header {
+        padding: 0.5rem 1rem;
+        border-left: 4px solid #000;
+    }
+
+    .card {
+        width: 50%;
+        height: 80px;
+        margin: 1%;
+        padding: 25px;
+        padding-top: 10px;
+        border-radius: 8px;
+        position: relative;
+        transition: .3s all;
+        box-shadow: 0 2px 5px 0 rgba(3, 6, 26, 0.15);
+    }
+
+    .card h3 {
+        text-transform: uppercase;
+        margin-bottom: 10px;
+    }
+
+    .card p {
+        margin-bottom: 60px;
+    }
+
+    .card-blue-dark {
+        background: #1e4c74;
+        color: white;
     }
 </style>
-
-{{character}}
 
 <div>
     <h1>py-spice inspect result</h1>
 </div>
-<div class="row">
-    <div class="column">
-        <h3>
-            検知数: {{detect_num}}
-        </h3>
-        <h3>
-            検知エンジン: {{detect_engine}}
-        </h3>
-        <h3>
-            タイムスタンプ: {{timestamp}}
-        </h3>
-        {% for key, value in inspect_result.items() %}
-            <p>{{key}}</p>
-            <table class="table">
-                <thead>
-                    <tr align="left">
-                        <th>#</th>
-                        <th>line No.</th>
-                        <th>message</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for ind, line_no, message in value %}
-                    <tr>
-                        <td align="right">
-                            {{ind}}
-                        </td>
-                        <td align="right">
-                            {{line_no}}
-                        </td>
-                        <td align="left">
-                            {{message}}
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        {% endfor %}
+
+<div class="main">
+    <div class="row">
+        <div class="column">
+            <div class="row">
+                <div class="column">
+                    <div class="card card-blue-dark">
+                        <h3>検知数</h3>
+                        <h2>{{detect_num}}</p>
+                    </div>
+                </div>
+                <div class="column">
+                    <div class="card card-blue-dark">
+                        <h3>検知エンジン</h3>
+                        <h2>{{detect_engine}}</p>
+                    </div>
+                </div>
+            </div>
+        <div class="column2">
+            <h3>
+                タイムスタンプ: {{timestamp}}
+            </h3>
+            {% for key, value in inspect_result.items() %}
+            <h2 class="table-header">{{key}}</h2>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr align="left">
+                            <th scope="col" data-type="numeric">#</th>
+                            <th scope="col" data-type="numeric">line No.</th>
+                            <th scope="col" data-type="text-long">message</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for ind, line_no, message in value %}
+                        <tr>
+                            <td>
+                                {{ind}}
+                            </td>
+                            <td align="center">
+                                {{line_no}}
+                            </td>
+                            <td>
+                                {{message}}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endfor %}
+        </div>
     </div>
     <div class="column">
-        <h2>
-            Source Code
-        </h2>
-        <code>
+        <div class="column2">
+            <h2>
+                Source Code
+            </h2>
+            <code>
             {{input_code}}
         </code>
+        </div>
     </div>
 </div>
+</div>
+
+<footer>
+    <p>all rights 的なやつ</p>
+</footer>
