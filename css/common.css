@@ -2,9 +2,9 @@
     --main-color: #1e50a2;
 }
 
-/* body {
+body {
     margin: 0;
-} */
+}
 
 .header {
     background-color: var(--main-color);
@@ -24,25 +24,30 @@
     line-height: 80px;
 }
 
-.option_container {
+.options_container {
     width: 600px;
     margin: 0 auto;
-    margin-top: 120px;
+    margin-top: 100px;
 }
 
-.option_container * {
+.options_container * {
     color: #444;
 }
 
-.option_container > h2 {
+.options_item:not(:last-child) {
+    padding: 1em 0;
+    border-bottom: 1px solid #ccc;
+}
+
+.options_item > h2 {
     font-size: 1.6rem;
 }
 
-.option_container > form > input[type=radio] {
+.options_item > form > input[type=radio] {
     display: none;
 }
 
-.option_container > form > label {
+.options_item > form > label {
     display: block;
     width: 100%;
     box-sizing: border-box;
@@ -57,16 +62,16 @@
     position: relative;
 }
 
-.option_container > form > label:hover {
+.options_item > form > label:hover {
     background-color: #eee;
 }
 
-.option_container > form > input[type=radio]:checked + label {
+.options_item > form > input[type=radio]:checked + label {
     color: var(--main-color);
     border: 1.6px solid var(--main-color);
 }
 
-.option_container > form > label:before {
+.options_item > form > label:before {
     position: absolute;
     display: block;
     width: 1.6em;
@@ -79,11 +84,11 @@
     border-radius: 50%;
 }
 
-.option_container > form > input[type=radio]:checked + label:before {
+.options_item > form > input[type=radio]:checked + label:before {
     border: 2.4px solid var(--main-color);
 }
 
-.option_container > form > input[type=radio]:checked + label:after {
+.options_item > form > input[type=radio]:checked + label:after {
     position: absolute;
     display: block;
     width: 0.8em;
