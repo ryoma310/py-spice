@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html>
-<head><title>YARA or Python</title></head>
+<head>
+    <title>Options</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/options.css">
+</head>
 <body>
-    <form name = "inspect_method_form">
-        <input type="radio" name="inspect_method" value="yara" id="yara"><label for="yara">YARA</label>
-        <input type="radio" name="inspect_method" value="python" id="python"><label for="python">Python</label>
-        <span id="status"></span>
-        <button type="button" id="save">Save</button>
-    </form>
-    
-    <button id="add_rule">Add rule</button>
-    <button id="show_rules">show rule</button>
-    <article id="current_rules"></article>
-
-    <button id="show_yara_rules">Show YARA Rules</button>
-    <div id="rules_container"></div>
+    <div class="header">
+        <h1>Options</h1>
+    </div>
+    <div class="options_container">
+        <div class="options_item">
+            <h2>Inspection Method</h2>
+            <form name="inspect_method_form">
+                <input type="radio" name="inspect_method" value="yara" id="yara"><label for="yara">YARA</label>
+                <input type="radio" name="inspect_method" value="python" id="python"><label for="python">Python</label>
+                <a class="btn" id="save">Save</a><span id="save_status"></span>
+            </form>
+        </div>
+        <div class="options_item">
+            <h2>YARA Rules</h2>
+            <a class="btn" id="add_rule">Add Rule</a>
+            <a class="btn" id="show_rules">Show All Rules</a>
+            <article id="current_rules"></article>
+            
+            <!-- <a class="btn" id="show_rules">Show YARA Rules</a> -->
+            <div id="rules_container"></div>
+        </div>
+    </div>
 
     <script src="options.js"></script>
 </body>
