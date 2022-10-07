@@ -22,6 +22,9 @@ window.onload = function () {
 
         url.pathname = "insandbox.html"
 
+        // add search parameters for inspect method
+        url.searchParams.append('inspect_method', value);
+
         let myIframe = document.getElementById("iframe");
 
         console.log("[popup.js] " + url.href);
