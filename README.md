@@ -19,9 +19,13 @@ Chromeの言語設定が日本語の場合は表示言語が日本語で、そ�
 
 ---
 ## インストール方法
-1. Releaseタブから`.crx`ファイルをダウンロード
-2. chromeの拡張機能画面(chrome://extensions/)で、右上のボタンから`デベロッパーモード`を有効化
-3. `.crx`をドラックアンドドロップしてインストール。
+1. このリポジトリをclone
+    ```bash
+    git clone https://github.com/ryoma310/py-spice.git
+    ```
+2. chromeの拡張機能画面(chrome://extensions/)を開く。
+3. 右上のボタンから`デベロッパーモード`を有効化
+4. `パッケージ化されていない拡張機能を読み込む`からcloneしたディレクトリを選択すると、インストールすることができます。
 
 
 ---
@@ -66,6 +70,7 @@ Chromeの言語設定が日本語の場合は表示言語が日本語で、そ�
     2. chromeの拡張機能画面(chrome://extensions/)を開く。
     3. 右上のボタンから`デベロッパーモード`を有効化
     4. `パッケージ化されていない拡張機能を読み込む`からcloneしたディレクトリを選択すると、インストールすることができます。
+    5. コンテンツを変更した場合は、拡張機能の管理画面よりリロード処理を行なってください。
 
 - [libyara-wasm](https://github.com/mattnotmitt/libyara-wasm)をビルドする方法については[こちら](build_support/libyara-wasm/README.md)に従ってください。
 
