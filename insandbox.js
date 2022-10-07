@@ -30,17 +30,6 @@ async function python_exec(txt){
     return res
 }
 
-// async function exec_(code){
-const exec_ = async(code) => {
-    // TODO: とりあえず、実行確認だけしてる。それぞれ、amd/armとオプションを使ってどれを使うか条件分岐する。
-    let yara_result = await yara_exec(code, []);
-    let python_result = await python_exec(code);
-
-    console.log("[insandbox.js] result(yara): %o", yara_result);
-    console.log("[insandbox.js] result(python): %o", python_result);
-}
-
-
 window.onload = function () {
     let url = new URL(window.location.href);
     console.log("[insandbox.js] " + "inside_sundbox")
@@ -59,6 +48,4 @@ window.onload = function () {
     } else {
         console.log("[insandbox.js] error inspect method word")
     }
-
-    // exec_(code);
 }
