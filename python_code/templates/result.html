@@ -51,69 +51,9 @@
     </div>
     <div class="code_container sub_container">
         <h2>ソースコード</h2>
+        <a class="btn" id="copy_btm">コピー</a>
         <pre><code>{{input_code}}</code></pre>
     </div>
-    <!-- <div class="row">
-        <div class="column">
-            <div class="row">
-                <div class="column">
-                    <div class="card card-blue-dark">
-                        <h3>検知数</h3>
-                        <h2>{{detect_num}}</p>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="card card-blue-dark">
-                        <h3>検知エンジン</h3>
-                        <h2>{{detect_engine}}</p>
-                    </div>
-                </div>
-            </div>
-        <div class="column2">
-            <h3>
-                タイムスタンプ: {{timestamp}}
-            </h3>
-            {% for key, value in inspect_result.items() %}
-            <h2 class="table-header">{{key}}</h2>
-            <div class="table-responsive">
-                <table class="table">
-                    <thead>
-                        <tr align="left">
-                            <th scope="col" data-type="numeric">#</th>
-                            <th scope="col" data-type="numeric">line No.</th>
-                            <th scope="col" data-type="text-long">message</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for ind, line_no, message in value %}
-                        <tr>
-                            <td>
-                                {{ind}}
-                            </td>
-                            <td align="center">
-                                {{line_no}}
-                            </td>
-                            <td>
-                                {{message}}
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            {% endfor %}
-        </div>
-    </div>
-    <div class="column">
-        <div class="column2">
-            <h2>
-                Source Code
-            </h2>
-            <code>
-            {{input_code}}
-        </code>
-        </div>
-    </div> -->
 </div>
 </div>
 
