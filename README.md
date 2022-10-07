@@ -1,3 +1,5 @@
+MWSCup 2022 ハッカソン課題締切時に提出したものは[こちら(ryoma310/py-spice/tree/mwscup2022-submit)](https://github.com/ryoma310/py-spice/tree/mwscup2022-submit)
+
 English version is [here](README_en.md).
 
 # py-spice: Python SniPet Inspector on Chrome Exetnsion
