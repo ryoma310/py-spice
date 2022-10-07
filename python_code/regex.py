@@ -26,7 +26,7 @@ def get_linenumber(index):
     for i in range(0, len(brlist)):
         if index < brlist[i]:
             return i+1
-    return len(brlist)
+    return len(brlist)+1
 
 match_result_ls = list()
 for k, v in match_strings.items():
