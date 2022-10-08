@@ -74,12 +74,6 @@ const exec_ = async(code, inspect_method, language) => {
     } else {
         console.log("[insandbox.js] error inspect method word")
     }
-    
-    //let yara_result = await yara_exec(code, []);
-    //let python_result = await python_exec(code);
-
-
-    //await create_result_window(code, python_result);
 }
 
 function hideLoadScreen() {
@@ -104,18 +98,12 @@ window.onload = function () {
     
     exec_(code, inspect_method, language);
 
-    //if (inspect_method == 'yara') {
-    //    let yara_result = yara_exec(code, []);
-    //    console.log("[insandbox.js] result(yara): %o", yara_result);
-    //} else if (inspect_method == 'python') {
-    //    let python_result = python_exec(code);
-    //    console.log("[insandbox.js] result(python): %o", python_result);
-    //} else {
-    //    console.log("[insandbox.js] error inspect method word")
-    //}
 }
 
 function copyCode() {
-    var code = document.getElementById("inspected_code");
-    // コピーするコードが書けません。
+    // request iframe parent to copy code into user's clipboard
+    window.parent.postMessage({
+        action: 'CopyCode',
+        message: ""
+    }, "*",);
 }
