@@ -60,8 +60,6 @@ async function create_result_window(input_code, result, engine_name, language){
     const div_result = document.getElementById("result");
     div_result.innerHTML = ret;
 
-    document.getElementById("copy_btn").addEventListener('click', copyCode);
-
     hideLoadScreen();
 }
 
