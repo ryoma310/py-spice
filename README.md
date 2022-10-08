@@ -1,19 +1,31 @@
+MWSCup 2022 ハッカソン課題締切時に提出したものは[こちら(ryoma310/py-spice/tree/mwscup2022-submit)](https://github.com/ryoma310/py-spice/tree/mwscup2022-submit)
+
+English version is [here](README_en.md).
+
 # py-spice: Python SniPet Inspector on Chrome Exetnsion
 
 `py-spice`はpythonのコードスニペットに(悪性な挙動をする可能性があり)注意する必要のある箇所があるかを検査するChrome拡張です。wasm内でサンドボックス化して実行されるので安全に確かめることができます。
 
 コードスニペットをChrome内で選択した状態で、右クリックをして`コードを検証してコピー`を押すことで利用することができます。
 
-<img width="344" alt="usage" src="https://user-images.githubusercontent.com/99947844/194550710-c6874a1b-7e90-4525-bf36-131c44cdbc09.png">
+<img width="344" alt="usage" src="https://user-images.githubusercontent.com/99947844/194580666-28d755e1-dad6-46f9-bce0-afaaa1869caf.png">
+
+Chromeの言語設定が日本語の場合は表示言語が日本語で、それ以外の場合は表示言語が英語になります。
+
 
 ---
 ## 動作の様子
+![demo](./images/demo.gif)
 
 ---
 ## インストール方法
-1. Releaseタブから`.crx`ファイルをダウンロード
-2. chromeの拡張機能画面(chrome://extensions/)で、右上のボタンから`デベロッパーモード`を有効化
-3. `.crx`をドラックアンドドロップしてインストール。
+1. このリポジトリをclone
+    ```bash
+    git clone https://github.com/ryoma310/py-spice.git
+    ```
+2. chromeの拡張機能画面(chrome://extensions/)を開く。
+3. 右上のボタンから`デベロッパーモード`を有効化
+4. `パッケージ化されていない拡張機能を読み込む`からcloneしたディレクトリを選択すると、インストールすることができます。
 
 
 ---
@@ -58,6 +70,7 @@
     2. chromeの拡張機能画面(chrome://extensions/)を開く。
     3. 右上のボタンから`デベロッパーモード`を有効化
     4. `パッケージ化されていない拡張機能を読み込む`からcloneしたディレクトリを選択すると、インストールすることができます。
+    5. コンテンツを変更した場合は、拡張機能の管理画面よりリロード処理を行なってください。
 
 - [libyara-wasm](https://github.com/mattnotmitt/libyara-wasm)をビルドする方法については[こちら](build_support/libyara-wasm/README.md)に従ってください。
 

@@ -2,6 +2,7 @@
     "manifest_version": 3,
     "name": "py-spice",
     "version": "1.0",
+    "description": "pythonのコードスニペットに(悪性な挙動をする可能性があり)注意する必要のある箇所があるかを検査するChrome拡張です。",
     
     "background": {
         "service_worker": "background.js",
@@ -9,7 +10,15 @@
     },
     
     "action": {
+        "default_icon": "icons/spice_16.png", 
         "default_popup": "default_popup.html"
+    },
+
+    "icons": {
+        "16": "icons/spice_16.png",
+        "32": "icons/spice_32.png",
+        "48": "icons/spice_48.png",
+        "128": "icons/spice_128.png"
     },
     
     "options_page": "options.html",

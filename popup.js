@@ -33,8 +33,12 @@ window.onload = function () {
 
         url.pathname = "insandbox.html"
 
+        let language = chrome.i18n.getMessage("language");
+        console.log(language);
+
         // add search parameters for inspect method
         url.searchParams.append('inspect_method', value);
+        url.searchParams.append("language", language);
 
         let myIframe = document.getElementById("iframe");
 

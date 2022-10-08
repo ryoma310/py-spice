@@ -2,20 +2,20 @@
 
 <div class="main_container">
     <div class="inspect_container sub_container">
-        <h2>検証結果</h2>
+        <h2>{{validation_results}}</h2>
         <div class="inspect_cards">
             <div class="card num_detect">
-                <span class="card_title">検知数</span>
+                <span class="card_title">{{validation_counts}}</span>
                 <span class="card_content">{{detect_num}}</span>
             </div>
             <div class="card detect_engine">
-                <span class="card_title">検知エンジン</span>
+                <span class="card_title">{{validation_engine}}</span>
                 <span class="card_content">{{detect_engine}}</span>
             </div>
         </div>
-        <div class="timestamp">タイムスタンプ：{{timestamp}}</div>
+        <div class="timestamp">{{timestamp_language}}{{timestamp}}</div>
         <div class="inspect_detail">
-            <h2>検証詳細</h2>
+            <h2>{{validation_details}}</h2>
             <ul>
                 {% for key, value in inspect_result.items() %}
                 <li>
@@ -50,11 +50,10 @@
         </div>
     </div>
     <div class="code_container sub_container">
-        <h2>ソースコード</h2>
-        <a class="btn" id="copy_btn">コピー</a>
-        <pre><code id="inspected_code">{{input_code}}</code></pre>
+        <h2>{{source_code}}</h2>
+        <a class="btn" id="copy_btn">{{copy_string}}</a>
+        <pre><code>{{input_code}}</code></pre>
     </div>
-</div>
 </div>
 
 <footer>
