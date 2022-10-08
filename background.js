@@ -37,7 +37,7 @@ fetch("./regex_yara.yar")
 chrome.runtime.onInstalled.addListener(() => {
     chrome.contextMenus.create({
         id: 'safe-copy',
-        title: 'コードを検証してコピー',
+        title: chrome.i18n.getMessage("background"),
         "contexts" : ["selection"]
     });
 });

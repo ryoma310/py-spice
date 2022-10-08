@@ -1,9 +1,18 @@
 {
+    "language": {"message": "ja"},
     "options_inspection_method_h2": { "message": "検証エンジン"},
-    "options_save": { "message": "保存"},
     "options_title": { "message": "オプション"},
     "options_yara_rule": { "message": "YARAルール"},
-    "options_add_rule": { "message": "追加"},
-    "options_show_rules": { "message": "参照"},
-    "options_saved": { "message": "正常に保存されました。"}
+    "options_add_rule": { "message": "ルールの追加"},
+    "options_show_rules": { "message": "ルールの表示"},
+    "options_saved": { "message": "正常に保存されました。"},
+    "options_inspect_window": { "message": "検証画面の開き方"},
+    "options_new_tab": { "message": "タブを開く"},
+    "options_popup": { "message": "ポップアップを開く"},
+    "background": { "message": "コードを検証してコピー"},
+    "defpop_validation_engine": { "message": "設定中の検知エンジン"},
+    "defpop_how": { "message": "コードを検証してコピーする方法"},
+    "defpop_select": { "message": "chromeの画面内で検証したい部分を選択"},
+    "defpop_view": { "message": "右クリックしてコンテキストメニューを表示"},
+    "defpop_copy": { "message": "<b>コードを検証してコピー</b>を押してください。"}
 }

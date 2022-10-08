@@ -9,7 +9,15 @@
     },
     
     "action": {
+        "default_icon": "spice_16.png", 
         "default_popup": "default_popup.html"
+    },
+
+    "icons": {
+        "16": "spice_16.png",
+        "32": "spice_32.png",
+        "48": "spice_48.png",
+        "128": "spice_128.png"
     },
     
     "options_page": "options.html",
