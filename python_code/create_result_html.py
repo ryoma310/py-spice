@@ -29,6 +29,7 @@ validation_engine = {"en":"Validation engine", "ja": "検知エンジン"}
 timestamp_language = {"en":"timestamp: ", "ja":"タイムスタンプ："}
 validation_details = {"en":"Validation details", "ja": "検知詳細"}
 source_code = {"en": "Source code", "ja": "ソースコード"}
+copy_string = {"en": "Copy", "ja": "コピー"}
 
 print(inspect_result_formated_new)
 data = {
@@ -42,7 +43,8 @@ data = {
     "validation_engine": validation_engine[result_namespace.language],
     "timestamp_language": timestamp_language[result_namespace.language],
     "validation_details": validation_details[result_namespace.language],
-    "source_code": source_code[result_namespace.language]
+    "source_code": source_code[result_namespace.language],
+    "copy_string": copy_string[result_namespace.language]
 
 }
 rendered = template.render(data)
