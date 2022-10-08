@@ -9,6 +9,16 @@ window.onload = function () {
     // let params = url.searchParams;
     selected_code_global = url.searchParams.get("s_text");
 
+    let code = url.searchParams.get("s_text");
+
+    // copy to clipboard
+    try {
+        navigator.clipboard.writeText(code);
+        console.log("success")
+    } catch(e) {
+        console.log("[background.js] error" + e);
+    }
+
     // receive parameters stored in chrome storage
     const inspect_method_promise = new Promise((resolve, reject) => {
         chrome.storage.local.get({

@@ -24,7 +24,7 @@
     
     "web_accessible_resources": [
         {
-            "resources": [ "pyodide/*", "lib/*", "js/*"],
+            "resources": [ "pyodide/*", "lib/*", "js/*", "background.js"],
             "matches": ["<all_urls>"]
         }
     ],
