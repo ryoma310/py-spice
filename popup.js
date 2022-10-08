@@ -8,6 +8,16 @@ window.onload = function () {
     let url = new URL(window.location.href);
     // let params = url.searchParams;
 
+    let code = url.searchParams.get("s_text");
+
+    // copy to clipboard
+    try {
+        navigator.clipboard.writeText(code);
+        console.log("success")
+    } catch(e) {
+        console.log("[background.js] error" + e);
+    }
+
     // receive parameters stored in chrome storage
     const inspect_method_promise = new Promise((resolve, reject) => {
         chrome.storage.local.get({
