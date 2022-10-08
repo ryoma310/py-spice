@@ -18,7 +18,8 @@
         "activeTab",
         "contextMenus",
         "scripting",
-        "storage"
+        "storage",
+        "clipboardWrite"
     ],
     
     "web_accessible_resources": [
