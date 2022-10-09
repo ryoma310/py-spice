@@ -3,6 +3,7 @@ MWSCup 2022 ハッカソン課題締切時に提出したものは[こちら(ryo
 English version is [here](README_en.md).
 
 # py-spice: Python SniPet Inspector on Chrome Exetnsion
+![logo](./images/spice_header.png)
 
 `py-spice`はpythonのコードスニペットに(悪性な挙動をする可能性があり)注意する必要のある箇所があるかを検査するChrome拡張です。wasm内でサンドボックス化して実行されるので安全に確かめることができます。
 
@@ -16,6 +17,10 @@ Chromeの言語設定が日本語の場合は表示言語が日本語で、そ�
 ---
 ## 動作の様子
 ![demo](./images/demo.gif)
+
+---
+## 動作環境
+- Chrome Browser: version 71.0 or later
 
 ---
 ## インストール方法
@@ -40,10 +45,10 @@ Chromeの言語設定が日本語の場合は表示言語が日本語で、そ�
 - yaraのものに比べ、ルールの拡張はできませんがより高速な動作が期待できます。
 
 ---
-## 動作環境
-- Chrome Browser: version 71.0 or later
-
-
+## 特徴
+- 2つの検査エンジン
+- 表示言語として、日本語/英語に対応
+- yaraエンジンの場合、カスタムルールを選択可能
 
 ---
 ## 中心となる技術
