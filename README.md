@@ -81,21 +81,21 @@ Chromeの言語設定が日本語の場合は表示言語が日本語で、そ�
 ---
 ## 機能の紹介
 ### 利用中の検知エンジンの確認
-
+![demo_confirm_engine](./images/01_confirm_engine.gif)
 ### yaraを利用した検知
-
+![demo_yara](./images/02_yara.gif)
 ### pure pythonを地用した検知
-
+![demo_python](./images/03_python.gif)
 ### オプション画面
-
+![demo_option](./images/04_option.gif)
 ### 検査結果をタブで表示
-
+![demo_tab](./images/05_tab.gif)
 ### 検査結果を新規ウィンドウで表示
-
+![demo_window](./images/06_window.gif)
 ### 適用されているyaraルールの確認
-
+![demo_confirm_yara](./images/07_confirm_yara.gif)
 ### 新規yaraルールの追加
-
+![demo_add_yara](./images/08_add_yara.gif)
 ### 多言語対応
 
 ---
