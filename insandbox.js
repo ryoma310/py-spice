@@ -15,11 +15,6 @@ if(!DEBUG){
 /* End turn off debug */
 
 async function yara_exec(txt, rule, language) {
-    window.parent.postMessage({
-        action: 'SyncMessage',
-        message: 'request'
-    }, "*",);
-
     window.addEventListener('message', async function (e) {
         if (!(e.origin === location.origin)){
             console.error("invalid sender");
@@ -33,6 +28,11 @@ async function yara_exec(txt, rule, language) {
         console.log("[insandbox.js] result(yara): %o", res);
         await create_result_window(txt, res, "yara", language);
     });
+
+    window.parent.postMessage({
+        action: 'SyncMessage',
+        message: 'request'
+    }, "*",);
 
 }
 

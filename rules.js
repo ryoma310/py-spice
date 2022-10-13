@@ -72,6 +72,16 @@ window.addEventListener('message', async function (e) {
         console.error("invalid sender");
         return;
     }
-    await displayRules(e.data.message);
-    hideLoadScreen();
+
+    if (e.data.action == "SyncRuleMessage") {
+        await displayRules(e.data.message);
+        hideLoadScreen();
+    }
 });
+
+window.onload = function () {
+    window.parent.postMessage({
+        action: 'RequestRuleMessage',
+        message: ""
+    }, "*",);
+}

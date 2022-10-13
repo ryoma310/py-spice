@@ -81,13 +81,34 @@ async function show_yara_rules() {
     if (!show_rules_clicked) {
         var container = document.getElementById("rules_container");
         var iframe = document.createElement("iframe");
+        iframe.setAttribute("id", "rule_iframe");
         iframe.width = 500;
         iframe.height = 500;
         container.appendChild(iframe);
-        iframe.src = new URL(chrome.runtime.getURL('./rules.html'));
         console.log("clicked");
         show_rules_clicked = true;
+    } else {
+        var iframe = document.getElementById("rule_iframe");
     }
+
+    window.addEventListener('message', async function (e) {
+        let myIframe = document.getElementById("rule_iframe");
+        if (!( e.origin === "null" && e.source === myIframe.contentWindow )){
+            console.error("invalid sender");
+            return;
+        }
+
+        if (e.data.action == "RequestRuleMessage") {
+            iframe.contentWindow.postMessage({
+                action: 'SyncRuleMessage',
+                message: rules_str
+              }, "*", ); 
+        }
+    });
+
+    iframe.src = new URL(chrome.runtime.getURL('./rules.html'));
+
+
     const root = await navigator.storage.getDirectory();
     const rule_handle = await root.getFileHandle("rules.yar", {create: false});
     var rules_str = await (await rule_handle.getFile()).text();
@@ -100,11 +121,6 @@ async function show_yara_rules() {
             rules_str = rules_str + "\n\n" + await (await rule_handle.getFile()).text()
         }
     }
-
-    document.querySelector("iframe").contentWindow.postMessage({
-      action: 'SyncMessage',
-      message: rules_str
-    }, "*", );
 }
 
 function setupI18n() {
