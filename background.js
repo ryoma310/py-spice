@@ -52,15 +52,13 @@ async function getCurrentTab() {
 }
 
 
-chrome.contextMenus.onClicked.addListener(item => {
-    getCurrentTab().then(tab => {
-        const tabId = tab.id
-        
-        chrome.scripting.executeScript({
-            target: { tabId: tabId },
-            func: getSelectedText,
-        }, (selection) => {
-            inspect_code(selection[0].result);
-        });
-    })
+chrome.contextMenus.onClicked.addListener((info, tab) => {
+    const tabId = tab.id
+    
+    chrome.scripting.executeScript({
+        target: { tabId: tabId },
+        func: getSelectedText,
+    }, (selection) => {
+        inspect_code(selection[0].result);
+    });
 });
