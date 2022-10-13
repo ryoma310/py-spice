@@ -1,6 +1,6 @@
 
 /* turn off debug */
-let DEBUG = false
+let DEBUG = false;
 if(!DEBUG){
     if(!window.console){
       window.console = {};
@@ -8,9 +8,7 @@ if(!DEBUG){
     var methods = [
       "log", "debug", "warn", "info"
     ];
-    for (var m in methods){
-        console[m] = function(){};
-    }
+    methods.forEach(elem => console[elem] = function(){});
 }
 /* End turn off debug */
 
@@ -22,7 +20,6 @@ function save_options() {
         favorite_inspect_method: inspect_method,
         favorite_inspect_window: inspect_window
     }, function() {
-        
     });
 }
 
@@ -78,23 +75,6 @@ async function add_rule() {
     await chrome.storage.local.set(rule_names);
 }
 
-// async function show_rules(){
-//     const options = {
-//         types: [
-//           {
-//             description: 'Text Files',
-//             accept: {
-//               'text/plain': ['.yar'],
-//             },
-//           },
-//         ],
-//       };
-//       const root = await navigator.storage.getDirectory();
-//       const rule_handle = await root.getFileHandle("rules.yar", {create: true});
-//       const current_rules = await (await rule_handle.getFile()).text();
-//       document.getElementById('current_rules').value = current_rules;
-// }
-
 var show_rules_clicked = false;
 
 async function show_yara_rules() {
@@ -141,9 +121,7 @@ function setupI18n() {
 
 document.addEventListener('DOMContentLoaded', setupI18n);
 document.addEventListener('DOMContentLoaded', restore_options);
-// document.getElementById('save_inspection_method').addEventListener('click', save_options);
 document.getElementById('add_rule').addEventListener('click', add_rule);
-// document.getElementById('show_rules').addEventListener('click', show_rules);
 document.getElementById('show_rules').addEventListener('click', show_yara_rules);
 
 let radio_btns = document.querySelectorAll(`input[type='radio']`);

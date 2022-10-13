@@ -1,5 +1,5 @@
 /* turn off debug */
-let DEBUG = false
+let DEBUG = false;
 if(!DEBUG){
     if(!window.console){
       window.console = {};
@@ -7,21 +7,19 @@ if(!DEBUG){
     var methods = [
       "log", "debug", "warn", "info"
     ];
-    for (var m in methods){
-        console[m] = function(){};
-    }
+    methods.forEach(elem => console[elem] = function(){});
 }
 /* End turn off debug */
 
 async function parseRules(rules_str) {
     let pyodide = await loadPyodide();
     await pyodide.loadPackage("micropip");
-    const micropip = pyodide.pyimport("micropip");
+    const micropip = await pyodide.pyimport("micropip");
     await micropip.install('plyara');
 
     let shared_variables = { rules_str: rules_str };
     pyodide.registerJsModule("shared_variables", shared_variables);
-    pyodide.runPython(`
+    await pyodide.runPython(`
 import plyara
 import json
 import js
@@ -70,6 +68,10 @@ function hideLoadScreen() {
 }
 
 window.addEventListener('message', async function (e) {
+    if (!(e.origin === location.origin)){
+        console.error("invalid sender");
+        return;
+    }
     await displayRules(e.data.message);
     hideLoadScreen();
 });

@@ -1,14 +1,12 @@
 'use strict';
 
 /* turn off debug */
-let DEBUG = false
+let DEBUG = false;
 if(!DEBUG){
     var methods = [
       "log", "debug", "warn", "info"
     ];
-    for(var i=0; i<methods.length; i++){
-      console[methods[i]] = function(){};
-    }
+    methods.forEach(elem => console[elem] = function(){});
 }
 /* End turn off debug */
 

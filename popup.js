@@ -1,6 +1,6 @@
 
 /* turn off debug */
-let DEBUG = false
+let DEBUG = false;
 if(!DEBUG){
     if(!window.console){
       window.console = {};
@@ -8,9 +8,7 @@ if(!DEBUG){
     var methods = [
       "log", "debug", "warn", "info"
     ];
-    for (var m in methods){
-        console[m] = function(){};
-    }
+    methods.forEach(elem => console[elem] = function(){});
 }
 /* End turn off debug */
 
@@ -25,14 +23,6 @@ window.onload = function () {
     selected_code_global = url.searchParams.get("s_text");
 
     let code = url.searchParams.get("s_text");
-
-    // copy to clipboard
-    // try {
-    //     navigator.clipboard.writeText(code);
-    //     console.log("success")
-    // } catch(e) {
-    //     console.log("[background.js] error" + e);
-    // }
 
     // receive parameters stored in chrome storage
     const inspect_method_promise = new Promise((resolve, reject) => {
@@ -63,6 +53,11 @@ window.onload = function () {
 }
 
 window.addEventListener('message', async function (e) {
+    let myIframe = document.getElementById("iframe");
+    if (!( e.origin === "null" && e.source === myIframe.contentWindow )){
+        console.error("invalid sender");
+        return;
+    }
     switch (e.data.action) {
         case "SyncMessage":
             const root = await navigator.storage.getDirectory();

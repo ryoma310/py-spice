@@ -2,7 +2,7 @@ import { Yara } from './js/yara.js';
 import { PythonRE } from './js/python.js';
 
 /* turn off debug */
-let DEBUG = false
+let DEBUG = false;
 if(!DEBUG){
     if(!window.console){
       window.console = {};
@@ -10,9 +10,7 @@ if(!DEBUG){
     var methods = [
       "log", "debug", "warn", "info"
     ];
-    for (var m in methods){
-        console[m] = function(){};
-    }
+    methods.forEach(elem => console[elem] = function(){});
 }
 /* End turn off debug */
 
@@ -23,11 +21,10 @@ async function yara_exec(txt, rule, language) {
     }, "*",);
 
     window.addEventListener('message', async function (e) {
-        //送信元のドメインが明確な場合は、チェックすることが強く推奨されています
-        /*if (e.origin !== "chrome-extension://"+ document.domain) 
+        if (!(e.origin === location.origin)){
+            console.error("invalid sender");
             return;
-        */
-        // console.error(e.origin);
+        }
         rule = e.data.message;
         let yara_wasm = await new Module();
         let yara = new Yara(yara_wasm, rule);
