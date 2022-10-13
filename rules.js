@@ -1,3 +1,18 @@
+/* turn off debug */
+let DEBUG = false
+if(!DEBUG){
+    if(!window.console){
+      window.console = {};
+    }
+    var methods = [
+      "log", "debug", "warn", "info"
+    ];
+    for(var i=0; i<methods.length; i++){
+      console[methods[i]] = function(){};
+    }
+}
+/* End turn off debug */
+
 async function parseRules(rules_str) {
     let pyodide = await loadPyodide();
     await pyodide.loadPackage("micropip");

@@ -1,5 +1,17 @@
 'use strict';
 
+/* turn off debug */
+let DEBUG = false
+if(!DEBUG){
+    var methods = [
+      "log", "debug", "warn", "info"
+    ];
+    for(var i=0; i<methods.length; i++){
+      console[methods[i]] = function(){};
+    }
+}
+/* End turn off debug */
+
 async function inspect_code(selected_text){
     console.log("[background.js] " + "insepct code!!!");
     console.log("[background.js] " + selected_text);

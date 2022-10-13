@@ -1,6 +1,21 @@
 import { Yara } from './js/yara.js';
 import { PythonRE } from './js/python.js';
 
+/* turn off debug */
+let DEBUG = false
+if(!DEBUG){
+    if(!window.console){
+      window.console = {};
+    }
+    var methods = [
+      "log", "debug", "warn", "info"
+    ];
+    for(var i=0; i<methods.length; i++){
+      console[methods[i]] = function(){};
+    }
+}
+/* End turn off debug */
+
 async function yara_exec(txt, rule, language) {
     window.parent.postMessage({
         action: 'SyncMessage',

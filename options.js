@@ -1,3 +1,19 @@
+
+/* turn off debug */
+let DEBUG = false
+if(!DEBUG){
+    if(!window.console){
+      window.console = {};
+    }
+    var methods = [
+      "log", "debug", "warn", "info"
+    ];
+    for(var i=0; i<methods.length; i++){
+      console[methods[i]] = function(){};
+    }
+}
+/* End turn off debug */
+
 // Saves options to chrome.storage
 function save_options() {
     var inspect_method = document.inspect_method_form.inspect_method.value;
@@ -6,12 +22,7 @@ function save_options() {
         favorite_inspect_method: inspect_method,
         favorite_inspect_window: inspect_window
     }, function() {
-        // Update status to let user know options were saved.
-        // var status = document.getElementById('save_inspection_method_status');
-        // status.textContent = chrome.i18n.getMessage('options_saved');
-        // setTimeout(function() {
-        //     status.textContent = '';
-        // }, 1000);
+        
     });
 }
 
