@@ -79,7 +79,6 @@ var show_rules_clicked = false;
 var rule_loading = false;
 
 async function show_yara_rules() {
-    console.error(rule_loading);
     if (rule_loading){
         return;
     }
