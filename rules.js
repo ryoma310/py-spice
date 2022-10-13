@@ -76,6 +76,10 @@ window.addEventListener('message', async function (e) {
     if (e.data.action == "SyncRuleMessage") {
         await displayRules(e.data.message);
         hideLoadScreen();
+        window.parent.postMessage({
+            action: 'RuleLoadFinish',
+            message: ""
+        }, "*",);
     }
 });
 

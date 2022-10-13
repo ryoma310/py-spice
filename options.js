@@ -76,8 +76,15 @@ async function add_rule() {
 }
 
 var show_rules_clicked = false;
+var rule_loading = false;
 
 async function show_yara_rules() {
+    console.error(rule_loading);
+    if (rule_loading){
+        return;
+    }
+    rule_loading = true;
+
     if (!show_rules_clicked) {
         var container = document.getElementById("rules_container");
         var iframe = document.createElement("iframe");
@@ -98,11 +105,20 @@ async function show_yara_rules() {
             return;
         }
 
-        if (e.data.action == "RequestRuleMessage") {
-            iframe.contentWindow.postMessage({
-                action: 'SyncRuleMessage',
-                message: rules_str
-              }, "*", ); 
+        switch (e.data.action) {
+            case "RequestRuleMessage":
+                iframe.contentWindow.postMessage({
+                    action: 'SyncRuleMessage',
+                    message: rules_str
+                  }, "*", ); 
+                break;
+
+            case "RuleLoadFinish":
+                rule_loading = false;
+                break;
+
+            default:
+                break;
         }
     });
 
