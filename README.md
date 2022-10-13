@@ -97,6 +97,7 @@ Chromeの言語設定が日本語の場合は表示言語が日本語で、そ�
 ### 新規yaraルールの追加
 ![demo_add_yara](./images/08_add_yara.gif)
 ### 多言語対応
+![demo_add_yara](./images/09_multiple_language.gif)
 
 ---
 ## 中心となる技術
