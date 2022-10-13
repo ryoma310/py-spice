@@ -51,8 +51,18 @@ window.addEventListener('message', async function (e) {
     switch (e.data.action) {
         case "SyncMessage":
             const root = await navigator.storage.getDirectory();
-            const rule_handle = await root.getFileHandle("rules.yar", {create: true});
-            let rules_str = await (await rule_handle.getFile()).text();
+            const rule_handle = await root.getFileHandle("rules.yar", {create: false});
+            var rules_str = await (await rule_handle.getFile()).text();
+
+            const key_rule_names = 'rule_names';
+            const rule_names = await chrome.storage.local.get(key_rule_names);
+            console.log(rule_names);
+            if (key_rule_names in rule_names){
+                for (var value of rule_names[key_rule_names]) {
+                    const rule_handle = await root.getFileHandle(value, {create: false});
+                    rules_str = rules_str + "\n\n" + await (await rule_handle.getFile()).text()
+                }
+            }
     
             console.log("send rules");
             document.querySelector("iframe").contentWindow.postMessage({

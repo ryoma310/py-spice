@@ -41,17 +41,30 @@ async function add_rule() {
       };
     const [handle] = await window.showOpenFilePicker(options);
     const file = await handle.getFile();
+    const d = new Date();
+    const formatted_datetime = `${d.getFullYear()}${(d.getMonth()+1).toString().padStart(2, '0')}${d.getDate().toString().padStart(2, '0')}${d.getHours().toString().padStart(2, '0')}${d.getMinutes().toString().padStart(2, '0')}${d.getSeconds().toString().padStart(2, '0')}`;
+    const file_name = file.name + "_" + formatted_datetime + ".yar";
     const new_rules = await file.text();
+
     //await writable.write(contents);
     //await writable.close();
 
     const root = await navigator.storage.getDirectory();
-    const rule_handle = await root.getFileHandle("rules.yar", {create: true});
+    const rule_handle = await root.getFileHandle(file_name, {create: true});
     const current_rules = await (await rule_handle.getFile()).text();
     const writable = await rule_handle.createWritable();
     await writable.write(current_rules);
     await writable.write(new_rules);
     await writable.close();
+
+    const key_rule_names = 'rule_names';
+    var rule_names = await chrome.storage.local.get(key_rule_names);
+    if (key_rule_names in rule_names){
+        rule_names[key_rule_names].push(file_name);
+    } else {
+        rule_names[key_rule_names] = [file_name];
+    }
+    await chrome.storage.local.set(rule_names);
 }
 
 // async function show_rules(){
@@ -85,8 +98,17 @@ async function show_yara_rules() {
         show_rules_clicked = true;
     }
     const root = await navigator.storage.getDirectory();
-    const rule_handle = await root.getFileHandle("rules.yar", {create: true});
-    let rules_str = await (await rule_handle.getFile()).text();
+    const rule_handle = await root.getFileHandle("rules.yar", {create: false});
+    var rules_str = await (await rule_handle.getFile()).text();
+
+    const key_rule_names = 'rule_names';
+    const rule_names = await chrome.storage.local.get(key_rule_names);
+    if (key_rule_names in rule_names){
+        for (var value of rule_names[key_rule_names]) {
+            const rule_handle = await root.getFileHandle(value, {create: false});
+            rules_str = rules_str + "\n\n" + await (await rule_handle.getFile()).text()
+        }
+    }
 
     document.querySelector("iframe").contentWindow.postMessage({
       action: 'SyncMessage',
