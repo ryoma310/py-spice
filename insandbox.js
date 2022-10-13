@@ -10,8 +10,8 @@ if(!DEBUG){
     var methods = [
       "log", "debug", "warn", "info"
     ];
-    for(var i=0; i<methods.length; i++){
-      console[methods[i]] = function(){};
+    for (var m in methods){
+        console[m] = function(){};
     }
 }
 /* End turn off debug */
@@ -27,6 +27,7 @@ async function yara_exec(txt, rule, language) {
         /*if (e.origin !== "chrome-extension://"+ document.domain) 
             return;
         */
+        // console.error(e.origin);
         rule = e.data.message;
         let yara_wasm = await new Module();
         let yara = new Yara(yara_wasm, rule);
