@@ -110,11 +110,3 @@ window.onload = function () {
     exec_(code, inspect_method, language);
 
 }
-
-function copyCode() {
-    // request iframe parent to copy code into user's clipboard
-    window.parent.postMessage({
-        action: 'CopyCode',
-        message: ""
-    }, "*",);
-}

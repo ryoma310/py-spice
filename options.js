@@ -1,6 +1,6 @@
 
 /* turn off debug */
-let DEBUG = false;
+let DEBUG = true;
 if(!DEBUG){
     if(!window.console){
       window.console = {};
@@ -16,9 +16,11 @@ if(!DEBUG){
 function save_options() {
     var inspect_method = document.inspect_method_form.inspect_method.value;
     var inspect_window = document.inspect_window_form.inspect_window.value;
+    var save_timing = document.save_timing_form.save_timing.value;
     chrome.storage.local.set({
         favorite_inspect_method: inspect_method,
-        favorite_inspect_window: inspect_window
+        favorite_inspect_window: inspect_window,
+        favorite_save_timing: save_timing
     }, function() {
     });
 }
@@ -29,10 +31,12 @@ function restore_options() {
     // Use default value color = 'red' and likesColor = true.
     chrome.storage.local.get({
         favorite_inspect_method: 'yara',
-        favorite_inspect_window: 'new_tab'
+        favorite_inspect_window: 'new_tab',
+        favorite_save_timing: 'after'
     }, function(items) {
         document.inspect_method_form.inspect_method.value = items.favorite_inspect_method;
         document.inspect_window_form.inspect_window.value = items.favorite_inspect_window;
+        document.save_timing_form.save_timing.value = items.favorite_save_timing;
     });
 }
 

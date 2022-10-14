@@ -1,6 +1,6 @@
 
 /* turn off debug */
-let DEBUG = false;
+let DEBUG = true;
 if(!DEBUG){
     if(!window.console){
       window.console = {};
@@ -31,6 +31,44 @@ window.onload = function () {
         }, function(items) {
             resolve(items.favorite_inspect_method);
         })
+    })
+
+    const save_timing = new Promise((resolve, reject) => {
+        chrome.storage.local.get({
+            favorite_save_timing: 'after'
+        }, function(items) {
+            resolve(items.favorite_save_timing);
+        });
+    })
+
+
+
+    Promise.all([inspect_method_promise, save_timing]).then((values) => {
+        console.log("[popup.js] then: " + values);
+
+        if( values[1] == 'before') {
+            // copy to clipboard
+            try {
+                navigator.clipboard.writeText(code);
+            } catch(e) {
+                console.log("[popup.js] copy text error" + e);
+            }
+        }
+
+        url.pathname = "insandbox.html";
+
+        let language = chrome.i18n.getMessage("language");
+        console.log(language);
+
+        // add search parameters for inspect method
+        url.searchParams.append('inspect_method', values[0]);
+        url.searchParams.append("language", language);
+        url.searchParams.append("save_timing", values[1]);
+
+        let myIframe = document.getElementById("iframe");
+
+        console.log("[popup.js] " + url.href);
+        myIframe.src = url.href
     })
 
     inspect_method_promise.then((value) => {
