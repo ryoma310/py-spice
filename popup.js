@@ -1,6 +1,6 @@
 
 /* turn off debug */
-let DEBUG = true;
+let DEBUG = false;
 if(!DEBUG){
     if(!window.console){
       window.console = {};
