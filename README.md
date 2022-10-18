@@ -24,8 +24,9 @@ Chromeの言語設定が日本語の場合は表示言語が日本語で、そ�
 
 ---
 ## インストール方法
-- chromeウェブストアから追加できます！[リンク](https://chrome.google.com/webstore/detail/py-spice/fjfbhgpdnhoobnikgjddccilekggomhc)
-- [For Developers](#for-developers)
+- chromeウェブストアから追加できます！
+    - [chrome.google.com/webstore/detail/py-spice](https://chrome.google.com/webstore/detail/py-spice/fjfbhgpdnhoobnikgjddccilekggomhc)
+- 開発をしたい方は[For Developers](#for-developers)のセクションを見てください。
 
 ---
 ## 特徴
