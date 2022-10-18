@@ -1,17 +1,25 @@
 import { Yara } from './js/yara.js';
 import { PythonRE } from './js/python.js';
 
-async function yara_exec(txt, rule, language) {
-    window.parent.postMessage({
-        action: 'SyncMessage',
-        message: 'request'
-    }, "*",);
+/* turn off debug */
+let DEBUG = false;
+if(!DEBUG){
+    if(!window.console){
+      window.console = {};
+    }
+    var methods = [
+      "log", "debug", "warn", "info"
+    ];
+    methods.forEach(elem => console[elem] = function(){});
+}
+/* End turn off debug */
 
+async function yara_exec(txt, rule, language) {
     window.addEventListener('message', async function (e) {
-        //送信元のドメインが明確な場合は、チェックすることが強く推奨されています
-        /*if (e.origin !== "chrome-extension://"+ document.domain) 
+        if (!(e.origin === location.origin)){
+            console.error("invalid sender");
             return;
-        */
+        }
         rule = e.data.message;
         let yara_wasm = await new Module();
         let yara = new Yara(yara_wasm, rule);
@@ -20,6 +28,11 @@ async function yara_exec(txt, rule, language) {
         console.log("[insandbox.js] result(yara): %o", res);
         await create_result_window(txt, res, "yara", language);
     });
+
+    window.parent.postMessage({
+        action: 'SyncMessage',
+        message: 'request'
+    }, "*",);
 
 }
 

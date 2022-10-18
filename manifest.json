@@ -33,14 +33,10 @@
     
     "web_accessible_resources": [
         {
-            "resources": [ "pyodide/*", "lib/*", "js/*", "background.js"],
+            "resources": [ "pyodide/*", "lib/*", "js/*"],
             "matches": ["<all_urls>"]
         }
     ],
-
-    "content_security_policy": {
-        "sandbox": "sandbox allow-scripts allow-forms allow-popups allow-modals; script-src 'self' 'unsafe-inline' 'unsafe-eval'; child-src 'self';"
-    },
 
     "sandbox": {
         "pages": [

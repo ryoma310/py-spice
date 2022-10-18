@@ -27,6 +27,14 @@
             </form>
         </div>
         <div class="options_item">
+            <form name="save_timing_form">
+                <h2 class="i18n-label" i18n-key="options_save_timing">Time to save code</h2>
+                <input type="radio" name="save_timing" value="before" id="before"><label for="before"  class="i18n-label" i18n-key="options_before">Before validation</label>
+                <input type="radio" name="save_timing" value="after" id="after"><label for="after" class="i18n-label" i18n-key="options_after">After validation</label>
+                <span id="save_save_timing_status" class="save_status"></span>
+            </form>
+        </div>
+        <div class="options_item">
             <h2 class="i18n-label" i18n-key="options_yara_rule">YARA Rules</h2>
             <a class="btn i18n-label" id="add_rule" i18n-key='options_add_rule'>Add Rule</a>
             <a class="btn i18n-label" id="show_rules" i18n-key='options_show_rules'>Show All Rules</a>
