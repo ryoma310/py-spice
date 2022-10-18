@@ -24,13 +24,8 @@ Chromeの言語設定が日本語の場合は表示言語が日本語で、そ�
 
 ---
 ## インストール方法
-1. このリポジトリをclone
-    ```bash
-    git clone https://github.com/ryoma310/py-spice.git
-    ```
-2. chromeの拡張機能画面(chrome://extensions/)を開く。
-3. 右上のボタンから`デベロッパーモード`を有効化
-4. `パッケージ化されていない拡張機能を読み込む`からcloneしたディレクトリを選択すると、インストールすることができます。
+- chromeウェブストアから追加できます！[リンク](https://chrome.google.com/webstore/detail/py-spice/fjfbhgpdnhoobnikgjddccilekggomhc)
+- [For Developers](#for-developers)
 
 ---
 ## 特徴
