@@ -120,3 +120,27 @@ table tbody tr:nth-child(odd){
     color: var(--main-color);
     border: 2px solid var(--main-color)
 }
+
+.fbbox {
+    background-color: white;
+    width: 180px;
+    height: 60px;
+    font-size: 1.6em;
+    text-align: center;
+    line-height: 4rem;
+    border-radius: 30px;
+    color: #32cd32;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 10px #444;
+    position: fixed;
+    top: -80px;
+    left:calc(50% - 180px/2);
+    transition: 0.2s;
+    transition-timing-function: ease-out;
+}
+
+.fbbox_active {
+    top: 10px;
+    transition: 0.2s;
+    transition-timing-function: ease-out;
+}

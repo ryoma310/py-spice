@@ -16,13 +16,30 @@ function receive_inspect_method() {
 
 }
 var selected_code_global = '';
+
+function showCopyFeedback(){
+    var fbbox = document.createElement("div");
+    document.body.appendChild(fbbox);
+    fbbox.classList.add("fbbox");
+    fbbox.textContent = "Copied!"
+    setTimeout(function() {
+        fbbox.classList.add("fbbox_active");
+        setTimeout(function(){
+            fbbox.classList.remove("fbbox_active");
+        }, 2000);
+    }, 200);
+}
+
 window.onload = function () {
     console.log("[popup.js] " + "I am popup.js");
     let url = new URL(window.location.href);
     // let params = url.searchParams;
     selected_code_global = url.searchParams.get("s_text");
 
-    let code = url.searchParams.get("s_text");
+    // copy code
+    // let code = url.searchParams.get("s_text");
+    // navigator.clipboard.writeText(code);
+    // showCopyFeedback();
 
     // receive parameters stored in chrome storage
     const inspect_method_promise = new Promise((resolve, reject) => {
